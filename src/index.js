@@ -1,8 +1,13 @@
-import * as validate from 'validate.js';
-export {required} from './decorators';
-export {length} from './decorators';
+export {length, required, date, datetime, email, equality, url, numericality} from './decorators';
+export {ValidationEngine} from './validation-engine';
+import {Validator} from 'aurelia-validation';
+import {Validator as ValidateJSValidator} from './validator';
+export {Validator} from './validator';
+import {ValidationReporter} from 'aurelia-validation';
+import {ValidationReporter as ValidateJSReporter} from './validation-reporter';
+export {ValidationReporter} from './validation-reporter';
 
-export function configure(config) {
-  // config.globalResources('./');
-  console.log(config);
+export function configure(aurelia) {
+  aurelia.container.registerHandler(Validator, ValidateJSValidator);
+  aurelia.container.registerHandler(ValidationReporter, ValidateJSReporter);
 }
