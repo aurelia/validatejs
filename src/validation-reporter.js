@@ -28,7 +28,7 @@ export class ValidationReporter {
     for (let key of Object.keys(this.__callbacks__)) {
       let observer = this.__callbacks__[key];
       observer.callback(errors);
-    };
+    }
   }
   destroyObserver(observer) {
     delete this.__callbacks__[observer.id];

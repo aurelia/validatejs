@@ -1,22 +1,22 @@
 {
-  "name": "aurelia-validate",
+  "name": "aurelia-validatejs",
   "version": "0.0.1",
   "description": "This is a plugin that will allow using validate.js in your Aurelia application for expressive validation.",
   "keywords": [
     "aurelia",
     "plugin",
-    "validation"
+    "validate.js"
   ],
   "homepage": "http://aurelia.io",
   "bugs": {
-    "url": "https://github.com/aurelia/validation/issues"
+    "url": "https://github.com/pwkad/validate.js/issues"
   },
   "license": "CC0-1.0",
   "author": "Patrick Walters <patrickwaltersc21@yahoo.com> (http://patrickwalters.net/)",
   "main": "dist/commonjs/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/aurelia/validation"
+    "url": "https://github.com/pwkad/validate.js"
   },
   "jspm": {
     "registry": "npm",
@@ -28,19 +28,20 @@
     "dependencies": {
       "aurelia-dependency-injection": "^1.0.0-beta.1.1.3",
       "aurelia-metadata": "^1.0.0-beta.1.1.4",
+      "aurelia-validation": "^0.6.2",
       "validate.js": "^0.9.0"
     },
     "devDependencies": {
       "aurelia-pal-browser": "^1.0.0-beta.1.1.2",
       "babel": "babel-core@^5.8.24",
       "babel-runtime": "^5.8.24",
-      "core-js": "^1.1.4",
+      "core-js": "^2.1.1",
       "traceur": "github:jmcriffey/bower-traceur@0.0.91",
       "traceur-runtime": "github:jmcriffey/bower-traceur-runtime@0.0.91"
     }
   },
   "devDependencies": {
-    "aurelia-tools": "^0.1.3",
+    "aurelia-tools": "^0.1.18",
     "babel-dts-generator": "0.2.18",
     "babel-eslint": "^4.1.3",
     "browser-sync": "^2.11.1",

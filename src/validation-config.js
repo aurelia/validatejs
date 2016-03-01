@@ -20,7 +20,7 @@ export class ValidationConfig {
     return this.__validationRules__ || (this.__validationRules__ = aggregateValidationRules(this));
   }
   aggregateValidationRules() {
-    console.error('not yet implemented')
+    console.error('not yet implemented');
     //get __validationRules__ from class using metadata
     //merge with any instance specific __validationRules__
   }

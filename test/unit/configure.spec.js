@@ -4,6 +4,9 @@ class ConfigStub {
   globalResources(...resources) {
     this.resources = resources;
   }
+  container = {
+    registerHandler: function () {}
+  }
 }
 
 describe('the Aurelia configuration', () => {
@@ -18,5 +21,4 @@ describe('the Aurelia configuration', () => {
     let mockedConfiguration = [];
     expect(mockedConfiguration).not.toEqual(undefined);
   });
-
 });

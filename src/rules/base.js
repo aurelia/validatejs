@@ -1,13 +1,12 @@
 import {metadata} from 'aurelia-metadata';
 import {ValidationConfig} from '../validation-config';
 import {ValidationEngine} from '../validation-engine';
-import {validationMetadataKey} from '../metadata-key';
-import validate from 'validate.js';
+import {validationMetadataKey} from 'aurelia-validation';
 
-export function base(targetOrConfig, key, descriptor, rule) {
+export function base(targetOrConfig, key, descriptor, Rule) {
   let deco = function(target, key2, descriptor2) {
     let config = metadata.getOrCreateOwn(validationMetadataKey, ValidationConfig, target);
-    config.addRule(key2, new rule(targetOrConfig));
+    config.addRule(key2, new Rule(targetOrConfig));
 
     // TODO: REMOVE
     let innerPropertyName = `_${key2}`;
@@ -31,9 +30,9 @@ export function base(targetOrConfig, key, descriptor, rule) {
 
     descriptor2.get.dependencies = [innerPropertyName];
     // Down to here
-  }
+  };
 
-  if(key) {
+  if (key) {
     let target = targetOrConfig;
     targetOrConfig = null;
     return deco(target, key, descriptor);
