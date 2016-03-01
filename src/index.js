@@ -2,11 +2,12 @@ export {length, required, date, datetime, email, equality, url, numericality} fr
 export {ValidationEngine} from './validation-engine';
 import {Validator} from 'aurelia-validation';
 import {Validator as ValidateJSValidator} from './validator';
-import {Reporter} from 'aurelia-validation';
-import {Reporter as ValidateJSReporter} from './validator';
+export {Validator} from './validator';
+import {ValidationReporter} from 'aurelia-validation';
+import {ValidationReporter as ValidateJSReporter} from './validation-reporter';
+export {ValidationReporter} from './validation-reporter';
 
 export function configure(aurelia) {
   aurelia.container.registerHandler(Validator, ValidateJSValidator);
-  aurelia.container.registerHandler(Reporter, ValidateJSReporter);
-  aurelia.globalResources('./validate-custom-attribute');
+  aurelia.container.registerHandler(ValidationReporter, ValidateJSReporter);
 }

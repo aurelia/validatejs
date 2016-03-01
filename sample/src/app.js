@@ -8,7 +8,6 @@ export class App {
   constructor(reporter) {
     this.model = new Model();
     this.reporter = reporter;
-    reporter.add(this.model)
   }
 }
 

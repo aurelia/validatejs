@@ -1,14 +1,13 @@
 /* eslint-disable no-var, no-shadow, dot-notation */
 
-var babel = require('gulp-babel');
-
 module.exports = function(wallaby) {
   return {
     files: [
 
       {pattern: 'jspm_packages/system.js', instrument: false},
       {pattern: 'config.js', instrument: false},
-      {pattern: 'src/**/*.js', load: false}
+      {pattern: 'src/**/*.js', load: false},
+      {pattern: 'test/fixtures/*.js', load: false}
 
     ],
 
@@ -18,7 +17,6 @@ module.exports = function(wallaby) {
 
     compilers: {
       '**/*.js': wallaby.compilers.babel({
-        babel: babel,
         optional: [
           'es7.decorators',
           'es7.classProperties'
@@ -26,9 +24,10 @@ module.exports = function(wallaby) {
       })
     },
 
-    // middleware: (app, express) => {
-    //   app.use('/jspm_packages', express.static(require('path').join(__dirname, 'jspm_packages')));
-    // },
+    middleware: (app, express) => {
+      console.log(__dirname)
+      app.use('/jspm_packages', express.static(require('path').join(__dirname, 'jspm_packages')));
+    },
 
     bootstrap: function(wallaby) {
       var promises = [];
@@ -48,9 +47,9 @@ module.exports = function(wallaby) {
 
       Promise.all(promises).then(function() {
         wallaby.start();
-      });
+      }).catch(function (e) { setTimeout(function (){ throw e; }, 0); });
     },
 
-    debug: true
+    debug: false
   };
 };
