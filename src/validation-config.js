@@ -3,7 +3,7 @@ export class ValidationConfig {
   addRule(key, rule) {
     this.__validationRules__.push({ key: key, rule: rule });
   }
-  validate(instance, key, oldValue, newValue, reporter) {
+  validate(instance, key, reporter) {
     let errors = [];
     this.__validationRules__.forEach(rule => {
       if (!key || key === rule.key) {
