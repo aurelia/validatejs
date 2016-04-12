@@ -17,6 +17,6 @@ gulp.task('watch', ['serve'], function() {
   gulp.watch(paths.source, ['build-amd', bs.reload]).on('change', reportChange);
   gulp.watch(paths.html, ['build-html-amd', bs.reload]).on('change', reportChange);
   gulp.watch(paths.style, bs.reload).on('change', reportChange);
-  gulp.watch(paths.sample + '/*', bs.reload).on('change', reportChange);
-  gulp.watch(paths.sample + '/src/**/*', bs.reload).on('change', reportChange);
+  gulp.watch(paths.sample + '/*', ['build-sample', bs.reload]).on('change', reportChange);
+  gulp.watch(paths.sample + '/src/**/*', ['build-sample', bs.reload]).on('change', reportChange);
 });

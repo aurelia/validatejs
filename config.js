@@ -17,7 +17,7 @@ System.config({
     "aurelia-metadata": "npm:aurelia-metadata@1.0.0-beta.1.2.0",
     "aurelia-pal-browser": "npm:aurelia-pal-browser@1.0.0-beta.1.2.0",
     "aurelia-polyfills": "npm:aurelia-polyfills@0.1.2",
-    "aurelia-validation": "npm:aurelia-validation@0.0.1",
+    "aurelia-validation": "npm:aurelia-validation@0.8.0",
     "babel": "npm:babel-core@5.8.38",
     "babel-runtime": "npm:babel-runtime@5.8.38",
     "core-js": "npm:core-js@1.2.6",
@@ -53,7 +53,7 @@ System.config({
     "npm:aurelia-polyfills@0.1.2": {
       "aurelia-pal": "npm:aurelia-pal@1.0.0-beta.1.2.0"
     },
-    "npm:aurelia-validation@0.0.1": {
+    "npm:aurelia-validation@0.8.0": {
       "aurelia-dependency-injection": "npm:aurelia-dependency-injection@1.0.0-beta.1.2.0",
       "aurelia-metadata": "npm:aurelia-metadata@1.0.0-beta.1.2.0"
     },
