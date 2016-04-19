@@ -1,11 +1,126 @@
-# aurelia-validate
+# aurelia-validatejs
 
 [![ZenHub](https://raw.githubusercontent.com/ZenHubIO/support/master/zenhub-badge.png)](https://zenhub.io)
 [![Join the chat at https://gitter.im/aurelia/discuss](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/aurelia/discuss?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
-This is a plugin that will allow using indicative in your Aurelia application for expressive validation. Karma/Jasmine testing is also configured.
+This is a plugin that will allow using validate.js in your Aurelia application for expressive validation. Karma/Jasmine testing is also configured.
 
 > To keep up to date on [Aurelia](http://www.aurelia.io/), please visit and subscribe to [the official blog](http://blog.durandal.io/). If you have questions, we invite you :wto [join us on Gitter](https://gitter.im/aurelia/discuss). If you would like to have deeper insight into our development process, please install the [ZenHub](https://zenhub.io) Chrome Extension and visit any of our repository's boards. You can get an overview of all Aurelia work by visiting [the framework board](https://github.com/aurelia/framework#boards).
+
+## Validation Rules
+
+Validation is performed using [validate.js](https://validatejs.org/).  You can visit their official site to get more information about how to use all of the validation rules.  Here are the base rules -
+
+### Date
+
+Ensure it is a date
+
+```es6
+export class Model {
+  @date myDate = new Date();
+}
+```
+
+### Datetime
+
+Ensure it is a datetime
+
+```es6
+export class Model {
+  @datetime myDate = new Date();
+}
+```
+
+### Email
+
+Ensure it is a valid e-mail format
+
+```es6
+export class Model {
+  @email email = 'patrick@example.com';
+}
+```
+
+### Equality
+
+Ensure it matches another property on the same object
+
+```es6
+export class Model {
+  @equality('password') confirmPassword = 'password1';
+}
+```
+
+### Exclusion
+
+Disallow a set of values
+
+```es6
+export class Model {
+  @exclusion(['blue']) color = 'red';
+}
+```
+
+### Format
+
+Ensure it matches a regex
+
+```es6
+export class Model {
+  @format(/\d{5}(-\d{4})?/) zipCode = '90210';
+}
+```
+
+### Inclusion
+
+Ensure it is included a set of values
+
+```es6
+export class Model {
+  @inclusion(['blue', 'red']) blueOrRed = 'yellow';
+}
+```
+
+### Length
+
+Ensure it is a certain length
+
+```es6
+export class Model {
+  @length({ minimum: 5, maximum: 25 }) password = 'equal';
+}
+```
+
+### Numericality
+
+Ensure it is a number (additional validation available, check validate.js documentation for more options)
+
+```es6
+export class Model {
+  @numericality({ onlyInteger: true, lessThan: 115, greaterThan: 0 }) age = 25;
+}
+```
+
+### Presence / Required
+
+Ensure it is a number (additional validation available, check validate.js documentation for more options)
+
+```es6
+export class Model {
+  @presence lastName = 'Skywalker';
+  @required lastName = 'Skywalker';
+}
+```
+
+### URL
+
+Ensure it is a valid URL
+
+```es6
+export class Model {
+  @url website = 'http://www.google.com';
+}
+```
 
 ## Building The Code
 
@@ -55,4 +170,30 @@ To run the unit tests, first ensure that you have followed the steps above in or
 
   ```shell
   karma start
+  ```
+
+## Running the Sample App
+
+There is a sample application provided that runs using the plugin itself.  To run this application -
+
+1. Change to the sample directory
+
+  ```shell
+  cd sample
+  ```
+2. Install all of the sample application's dev dependencies:
+
+  ```shell
+  npm install
+  ```
+3. Install all of the sample application's client-side dependencies with jspm:
+
+  ```shell
+  jspm install
+  ```
+
+4. You can now run sample application:
+
+  ```shell
+  gulp start
   ```
