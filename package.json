@@ -1,6 +1,6 @@
 {
   "name": "aurelia-validatejs",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "This is a plugin that will allow using validate.js in your Aurelia application for expressive validation.",
   "keywords": [
     "aurelia",
