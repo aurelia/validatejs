@@ -31,16 +31,18 @@ describe('ValidationEngine', () => {
   });
 
   describe('.validate', () => {
-    xit('runs validation against the correct instance / config', () => {
+    it('runs validation against the correct instance / config', () => {
       let result = target.validate();
+      console.log(result);
       expect(result).toEqual(new ValidationReporter());
     });
 
-    xit('returns an existing reporter if present', () => {
+    it('returns an existing reporter if present', () => {
       let vrInstance = new ValidationReporter();
       vrInstance.uniqueId = 1;
       let mockInstance = { __validationReporter__: vrInstance };
       let result = ValidationEngine.getValidationReporter(mockInstance);
+      console.log(result);
       expect(result).toEqual(vrInstance);
     })
   });

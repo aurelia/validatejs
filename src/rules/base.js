@@ -25,11 +25,10 @@ export function base(targetOrConfig, key, descriptor, Rule) {
 
       this[innerPropertyName] = newValue;
 
-      config.validate(this, key2, oldValue, newValue, reporter);
+      config.validate(this, reporter);
     };
 
     descriptor2.get.dependencies = [innerPropertyName];
-    // Down to here
   };
 
   if (key) {

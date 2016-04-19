@@ -1,4 +1,4 @@
-export {length, required, date, datetime, email, equality, url, numericality} from './decorators';
+export {length, required, date, datetime, email, equality, exclusion, inclusion, format, url, numericality} from './decorators';
 export {ValidationEngine} from './validation-engine';
 import {ValidationEngine} from './validation-engine';
 import {Validator} from 'aurelia-validation';

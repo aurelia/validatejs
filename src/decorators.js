@@ -5,6 +5,9 @@ import {DateRule} from './rules/date';
 import {DatetimeRule} from './rules/datetime';
 import {EmailRule} from './rules/email';
 import {EqualityRule} from './rules/equality';
+import {ExclusionRule} from './rules/exclusion';
+import {InclusionRule} from './rules/inclusion';
+import {FormatRule} from './rules/format';
 import {UrlRule} from './rules/url';
 import {NumericalityRule} from './rules/numericality';
 
@@ -30,6 +33,18 @@ export function email(targetOrConfig, key, descriptor) {
 
 export function equality(targetOrConfig, key, descriptor) {
   return base(targetOrConfig, key, descriptor, EqualityRule);
+}
+
+export function exclusion(targetOrConfig, key, descriptor) {
+  return base(targetOrConfig, key, descriptor, ExclusionRule);
+}
+
+export function inclusion(targetOrConfig, key, descriptor) {
+  return base(targetOrConfig, key, descriptor, InclusionRule);
+}
+
+export function format(targetOrConfig, key, descriptor) {
+  return base(targetOrConfig, key, descriptor, FormatRule);
 }
 
 export function url(targetOrConfig, key, descriptor) {

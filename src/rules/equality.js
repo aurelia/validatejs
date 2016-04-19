@@ -1,7 +1,7 @@
 import {ValidationRule} from '../validation-rule';
 
 export class EqualityRule {
-  constructor() {
-    return new ValidationRule('equality', true);
+  constructor(config) {
+    return new ValidationRule('equality', config);
   }
 }

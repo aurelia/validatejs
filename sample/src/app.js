@@ -1,25 +1,33 @@
 import {inject} from 'aurelia-framework';
-import {length, required, date, datetime, email, equality, url, numericality} from 'aurelia-validate';
-import {ValidationReporter} from 'aurelia-validate';
+import {length, required, date, datetime, email, equality, exclusion, inclusion, format, url, numericality} from 'aurelia-validate';
+import {ValidationEngine} from 'aurelia-validate';
 
 export class App {
-  static inject = [ValidationReporter];
   model;
-  constructor(reporter) {
+  errors = [];
+  constructor() {
     this.model = new Model();
-    this.reporter = reporter;
+    this.reporter = ValidationEngine.getValidationReporter(this.model);
+    this.reporter.subscribe(result => {
+      this.errors.splice(0, this.errors.length);
+      result.forEach(error => {
+        this.errors.push(error)
+      });
+    });
   }
 }
 
 class Model {
   @length({ minimum: 5, maximum: 25 }) firstName = 'Luke';
   @required lastName = 'Skywalker';
-  @date lastUpdated = new Date();
-  @datetime lastTimeUpdated = new Date();
+  // @date lastUpdated = new Date();
+  // @datetime lastTimeUpdated = new Date();
   @email email = 'luke@skywalker.net';
   @length({ minimum: 5, maximum: 25 }) password = 'equal';
-  @equality confirmPassword = 'equal';
+  @equality('password') confirmPassword = 'equal';
+  @inclusion(['blue', 'red']) blueOrRed = 'yellow';
+  @exclusion(['male']) gender = 'male';
   @url website = 'http://www.google.com';
-  @numericality friendCount = 25;
-  @numericality({ noStrings: true }) age = 25;
+  @numericality({ onlyInteger: true, lessThan: 115, greaterThan: 0 }) age = 25;
+  @format(/\d{5}(-\d{4})?/) zipCode = '12345';
 }
