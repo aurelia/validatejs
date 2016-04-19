@@ -11,13 +11,13 @@ System.config({
   },
   paths: {
     "*": "dist/*",
-    "aurelia-validate": "/aurelia-validate",
+    "aurelia-validatejs": "/aurelia-validatejs",
     "github:*": "jspm_packages/github/*",
     "npm:*": "jspm_packages/npm/*"
   },
 
   packages: {
-    "/aurelia-validate": {
+    "/aurelia-validatejs": {
       "main": "index",
       "format": "amd",
       "dependencies": {

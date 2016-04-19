@@ -1,5 +1,5 @@
-import {length, required, date, datetime, email, equality, url, numericality} from 'aurelia-validate';
-import {ValidationReporter} from 'aurelia-validate';
+import {length, required, date, datetime, email, equality, url, numericality} from 'aurelia-validatejs';
+import {ValidationReporter} from 'aurelia-validatejs';
 
 export class App {
   static inject = [ValidationReporter];

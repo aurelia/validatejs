@@ -1,6 +1,6 @@
 import {inject} from 'aurelia-framework';
-import {length, required, date, datetime, email, equality, exclusion, inclusion, format, url, numericality} from 'aurelia-validate';
-import {ValidationEngine} from 'aurelia-validate';
+import {length, required, date, datetime, email, equality, exclusion, inclusion, format, url, numericality} from 'aurelia-validatejs';
+import {ValidationEngine} from 'aurelia-validatejs';
 
 export class App {
   model;
