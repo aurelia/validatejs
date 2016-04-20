@@ -17,26 +17,26 @@ describe('ValidationConfig', () => {
 
   describe('.validate', () => {
     it('returns empty array if no rules exist', () => {
-      let result = config.validate(config, 'name', validationReporterStub);
+      let result = config.validate(config, validationReporterStub, 'name');
       expect(result).toEqual([]);
     });
 
     it('returns empty array if no rules are invalid', () => {
       config.addRule('name', new PASSING_RULE());
-      let result = config.validate(config, 'name', validationReporterStub);
+      let result = config.validate(config, validationReporterStub, 'name');
       expect(result).toEqual([]);
     });
 
     it('returns non-empty array if rules are invalid', () => {
       config.addRule('name', new FAILING_RULE());
-      let result = config.validate(config, 'name', validationReporterStub);
+      let result = config.validate(config, validationReporterStub, 'name');
       expect(result.length).toEqual(1);
     });
 
     it('validates all errors if no key is supplied', () => {
       config.addRule('name', new FAILING_RULE());
       config.addRule('something', new FAILING_RULE());
-      let result = config.validate(config, null, validationReporterStub);
+      let result = config.validate(config, validationReporterStub);
       expect(result.length).toEqual(2);
     });
   });

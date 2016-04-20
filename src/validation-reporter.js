@@ -18,6 +18,7 @@ export class ValidationObserver {
 }
 
 export class ValidationReporter {
+  callback;
   __callbacks__ = {};
   subscribe(callback) {
     let observer = new ValidationObserver(this, callback);
