@@ -4,6 +4,7 @@ import {ValidationEngine} from './validation-engine';
 import {metadata} from 'aurelia-metadata';
 import {RequiredRule} from './rules/required';
 import {LengthRule} from './rules/length';
+import {NumericalityRule} from './rules/numericality';
 
 export class Validator {
   object;
@@ -35,6 +36,10 @@ export class Validator {
   }
   required() {
     this.config.addRule(this.currentProperty, new RequiredRule());
+    return this;
+  }
+  numericality() {
+    this.config.addRule(this.currentProperty, new NumericalityRule());
     return this;
   }
 }
