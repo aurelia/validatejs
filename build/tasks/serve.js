@@ -13,7 +13,7 @@ gulp.task('serve', ['build'], function(done) {
     server: {
       baseDir: paths.sample,
       routes: {
-        '/aurelia-validate': path.join(paths.output, 'amd'),
+        '/aurelia-validatejs': path.join(paths.output, 'amd'),
       },
     },
   }, done);

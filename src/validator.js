@@ -5,6 +5,14 @@ import {metadata} from 'aurelia-metadata';
 import {RequiredRule} from './rules/required';
 import {LengthRule} from './rules/length';
 import {NumericalityRule} from './rules/numericality';
+import {EmailRule} from './rules/email';
+import {InclusionRule} from './rules/inclusion';
+import {ExclusionRule} from './rules/exclusion';
+import {EqualityRule} from './rules/equality';
+import {FormatRule} from './rules/format';
+import {UrlRule} from './rules/url';
+import {DateRule} from './rules/date';
+import {DatetimeRule} from './rules/datetime';
 
 export class Validator {
   object;
@@ -40,6 +48,38 @@ export class Validator {
   }
   numericality() {
     this.config.addRule(this.currentProperty, new NumericalityRule());
+    return this;
+  }
+  date() {
+    this.config.addRule(this.currentProperty, new DateRule());
+    return this;
+  }
+  datetime() {
+    this.config.addRule(this.currentProperty, new DatetimeRule());
+    return this;
+  }
+  email() {
+    this.config.addRule(this.currentProperty, new EmailRule());
+    return this;
+  }
+  equality(configuration) {
+    this.config.addRule(this.currentProperty, new EqualityRule(configuration));
+    return this;
+  }
+  format(configuration) {
+    this.config.addRule(this.currentProperty, new FormatRule(configuration));
+    return this;
+  }
+  inclusion(configuration) {
+    this.config.addRule(this.currentProperty, new InclusionRule(configuration));
+    return this;
+  }
+  exclusion(configuration) {
+    this.config.addRule(this.currentProperty, new ExclusionRule(configuration));
+    return this;
+  }
+  url() {
+    this.config.addRule(this.currentProperty, new UrlRule());
     return this;
   }
 }
