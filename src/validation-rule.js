@@ -1,5 +1,5 @@
 import validate from 'validate.js';
-import {ValidationError} from './validation-error'; 
+import {ValidationError} from './validation-error';
 
 export class ValidationRule {
   name = '';

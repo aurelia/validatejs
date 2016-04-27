@@ -20,7 +20,7 @@ export class Validator {
   validate(prop) {
     let reporter = ValidationEngine.getValidationReporter(this.object);
     if (prop) {
-      this.config.validate(this.object, reporter, prop)
+      this.config.validate(this.object, reporter, prop);
     } else {
       this.config.validate(this.object, reporter);
     }

@@ -20,7 +20,6 @@ export function base(targetOrConfig, key, descriptor, Rule) {
 
     descriptor2.get = function() { return this[innerPropertyName]; };
     descriptor2.set = function(newValue) {
-      let oldValue = this[innerPropertyName];
       let reporter = ValidationEngine.getValidationReporter(this);
 
       this[innerPropertyName] = newValue;

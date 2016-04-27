@@ -25,7 +25,6 @@ module.exports = function(wallaby) {
     },
 
     middleware: (app, express) => {
-      console.log(__dirname)
       app.use('/jspm_packages', express.static(require('path').join(__dirname, 'jspm_packages')));
     },
 
