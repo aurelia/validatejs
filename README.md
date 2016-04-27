@@ -19,6 +19,15 @@ Ensure it is a date
 export class Model {
   @date myDate = new Date();
 }
+
+export class Model {
+  static inject = [Validator];
+  constructor(validator) {
+    this.validator = validator
+      .ensure(this, 'myDate')
+        .date();
+  }
+}
 ```
 
 ### Datetime
@@ -28,6 +37,15 @@ Ensure it is a datetime
 ```es6
 export class Model {
   @datetime myDate = new Date();
+}
+
+export class Model {
+  static inject = [Validator];
+  constructor(validator) {
+    this.validator = validator
+      .ensure(this, 'myDate')
+        .datetime();
+  }
 }
 ```
 
@@ -39,6 +57,15 @@ Ensure it is a valid e-mail format
 export class Model {
   @email email = 'patrick@example.com';
 }
+
+export class Model {
+  static inject = [Validator];
+  constructor(validator) {
+    this.validator = validator
+      .ensure(this, 'email')
+        .email();
+  }
+}
 ```
 
 ### Equality
@@ -48,6 +75,15 @@ Ensure it matches another property on the same object
 ```es6
 export class Model {
   @equality('password') confirmPassword = 'password1';
+}
+
+export class Model {
+  static inject = [Validator];
+  constructor(validator) {
+    this.validator = validator
+      .ensure(this, 'confirmPassword')
+        .equality('password');
+  }
 }
 ```
 
@@ -59,6 +95,15 @@ Disallow a set of values
 export class Model {
   @exclusion(['blue']) color = 'red';
 }
+
+export class Model {
+  static inject = [Validator];
+  constructor(validator) {
+    this.validator = validator
+      .ensure(this, 'color')
+        .exclusion(['blue']);
+  }
+}
 ```
 
 ### Format
@@ -68,6 +113,15 @@ Ensure it matches a regex
 ```es6
 export class Model {
   @format(/\d{5}(-\d{4})?/) zipCode = '90210';
+}
+
+export class Model {
+  static inject = [Validator];
+  constructor(validator) {
+    this.validator = validator
+      .ensure(this, 'zipCode')
+        .format(/\d{5}(-\d{4})?/);
+  }
 }
 ```
 
@@ -79,6 +133,15 @@ Ensure it is included a set of values
 export class Model {
   @inclusion(['blue', 'red']) blueOrRed = 'yellow';
 }
+
+export class Model {
+  static inject = [Validator];
+  constructor(validator) {
+    this.validator = validator
+      .ensure(this, 'blueOrRed')
+        .format(['blue', 'red']);
+  }
+}
 ```
 
 ### Length
@@ -89,6 +152,15 @@ Ensure it is a certain length
 export class Model {
   @length({ minimum: 5, maximum: 25 }) password = 'equal';
 }
+
+export class Model {
+  static inject = [Validator];
+  constructor(validator) {
+    this.validator = validator
+      .ensure(this, 'password')
+        .length({ minimum: 5, maximum: 25 });
+  }
+}
 ```
 
 ### Numericality
@@ -98,6 +170,15 @@ Ensure it is a number (additional validation available, check validate.js docume
 ```es6
 export class Model {
   @numericality({ onlyInteger: true, lessThan: 115, greaterThan: 0 }) age = 25;
+}
+
+export class Model {
+  static inject = [Validator];
+  constructor(validator) {
+    this.validator = validator
+      .ensure(this, 'age')
+        .length({ onlyInteger: true, lessThan: 115, greaterThan: 0 });
+  }
 }
 ```
 
@@ -110,6 +191,15 @@ export class Model {
   @presence lastName = 'Skywalker';
   @required lastName = 'Skywalker';
 }
+
+export class Model {
+  static inject = [Validator];
+  constructor(validator) {
+    this.validator = validator
+      .ensure(this, 'firstName')
+        .required();
+  }
+}
 ```
 
 ### URL
@@ -119,6 +209,15 @@ Ensure it is a valid URL
 ```es6
 export class Model {
   @url website = 'http://www.google.com';
+}
+
+export class Model {
+  static inject = [Validator];
+  constructor(validator) {
+    this.validator = validator
+      .ensure(this, 'website')
+        .url();
+  }
 }
 ```
 
