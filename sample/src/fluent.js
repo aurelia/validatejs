@@ -29,12 +29,15 @@ export class Fluent {
         .format(/\d{5}(-\d{4})?/);
         ;
     this.reporter = ValidationEngine.getValidationReporter(this.model);
-    this.reporter.subscribe(result => {
+    this.observer = this.reporter.subscribe(result => {
       console.log(result);
     });
   }
   validate() {
     this.validator.validate();
+  }
+  detached() {
+    this.observer.dispose();
   }
 }
 

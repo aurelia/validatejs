@@ -6,6 +6,7 @@ export {Validator} from './validator';
 import {ValidationReporter} from 'aurelia-validation';
 import {ValidationReporter as ValidateJSReporter} from './validation-reporter';
 export {ValidationReporter} from './validation-reporter';
+export {ValidationRenderer} from './validation-renderer';
 
 export function configure(aurelia) {
   aurelia.container.registerHandler(Validator, ValidateJSValidator);

@@ -5,14 +5,31 @@ import {ValidationEngine} from 'aurelia-validatejs';
 export class Decorators {
   model;
   errors = [];
+  subscriber;
   constructor() {
     this.model = new Model();
     this.reporter = ValidationEngine.getValidationReporter(this.model);
-    this.reporter.subscribe(result => {
-      this.errors.splice(0, this.errors.length);
-      result.forEach(error => {
-        this.errors.push(error)
-      });
+    this.subscriber = this.reporter.subscribe(result => {
+      this.renderErrors(result);
+    });
+  }
+  detached() {
+    this.subscriber.dispose();
+  }
+  submit() {
+    if (!this.hasErrors()) {
+      alert('Submitted successfully');
+    } else {
+      alert('Form has errors');
+    }
+  }
+  hasErrors() {
+    return !!this.errors.length;
+  }
+  renderErrors(result) {
+    this.errors.splice(0, this.errors.length);
+    result.forEach(error => {
+      this.errors.push(error)
     });
   }
 }
