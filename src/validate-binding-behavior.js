@@ -1,4 +1,4 @@
-import {ValidationEngine} from './validation-engine';
+// import {ValidationEngine} from './validation-engine';
 import {ValidationRenderer} from './validation-renderer';
 
 export class ValidateBindingBehavior {
@@ -8,7 +8,7 @@ export class ValidateBindingBehavior {
   }
   bind(binding, source) {
     let targetProperty;
-    let target;
+    // let target;
     let reporter;
     targetProperty = this.getTargetProperty(binding);
     // target = this.getPropertyContext(source, targetProperty);
@@ -22,9 +22,9 @@ export class ValidateBindingBehavior {
     });
   }
   unbind(binding, source) {
-    let targetProperty = this.getTargetProperty(source);
+    // let targetProperty = this.getTargetProperty(source);
     // let target = this.getPropertyContext(source, targetProperty);
-    let reporter = this.getReporter(source);
+    // let reporter = this.getReporter(source);
   }
   getTargetProperty(binding) {
     let targetProperty;
