@@ -7,9 +7,9 @@ exports.base = base;
 
 var _aureliaMetadata = require('aurelia-metadata');
 
-var _validationConfig = require('../validation-config');
+var _validationConfig = require('./validation-config');
 
-var _validationEngine = require('../validation-engine');
+var _validationEngine = require('./validation-engine');
 
 var _aureliaValidation = require('aurelia-validation');
 

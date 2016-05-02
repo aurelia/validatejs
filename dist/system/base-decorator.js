@@ -1,6 +1,6 @@
 'use strict';
 
-System.register(['aurelia-metadata', '../validation-config', '../validation-engine', 'aurelia-validation'], function (_export, _context) {
+System.register(['aurelia-metadata', './validation-config', './validation-engine', 'aurelia-validation'], function (_export, _context) {
   var metadata, ValidationConfig, ValidationEngine, validationMetadataKey;
   return {
     setters: [function (_aureliaMetadata) {

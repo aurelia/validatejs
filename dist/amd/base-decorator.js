@@ -1,4 +1,4 @@
-define(['exports', 'aurelia-metadata', '../validation-config', '../validation-engine', 'aurelia-validation'], function (exports, _aureliaMetadata, _validationConfig, _validationEngine, _aureliaValidation) {
+define(['exports', 'aurelia-metadata', './validation-config', './validation-engine', 'aurelia-validation'], function (exports, _aureliaMetadata, _validationConfig, _validationEngine, _aureliaValidation) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {

@@ -1,4 +1,4 @@
-import { base } from './rules/base';
+import { base } from './base-decorator';
 import { LengthRule } from './rules/length';
 import { RequiredRule } from './rules/required';
 import { DateRule } from './rules/date';

@@ -15,7 +15,7 @@ exports.format = format;
 exports.url = url;
 exports.numericality = numericality;
 
-var _base = require('./rules/base');
+var _baseDecorator = require('./base-decorator');
 
 var _length = require('./rules/length');
 
@@ -40,45 +40,45 @@ var _url = require('./rules/url');
 var _numericality = require('./rules/numericality');
 
 function length(targetOrConfig, key, descriptor) {
-  return (0, _base.base)(targetOrConfig, key, descriptor, _length.LengthRule);
+  return (0, _baseDecorator.base)(targetOrConfig, key, descriptor, _length.LengthRule);
 }
 
 function required(targetOrConfig, key, descriptor) {
-  return (0, _base.base)(targetOrConfig, key, descriptor, _required.RequiredRule);
+  return (0, _baseDecorator.base)(targetOrConfig, key, descriptor, _required.RequiredRule);
 }
 
 function date(targetOrConfig, key, descriptor) {
-  return (0, _base.base)(targetOrConfig, key, descriptor, _date.DateRule);
+  return (0, _baseDecorator.base)(targetOrConfig, key, descriptor, _date.DateRule);
 }
 
 function datetime(targetOrConfig, key, descriptor) {
-  return (0, _base.base)(targetOrConfig, key, descriptor, _datetime.DatetimeRule);
+  return (0, _baseDecorator.base)(targetOrConfig, key, descriptor, _datetime.DatetimeRule);
 }
 
 function email(targetOrConfig, key, descriptor) {
-  return (0, _base.base)(targetOrConfig, key, descriptor, _email.EmailRule);
+  return (0, _baseDecorator.base)(targetOrConfig, key, descriptor, _email.EmailRule);
 }
 
 function equality(targetOrConfig, key, descriptor) {
-  return (0, _base.base)(targetOrConfig, key, descriptor, _equality.EqualityRule);
+  return (0, _baseDecorator.base)(targetOrConfig, key, descriptor, _equality.EqualityRule);
 }
 
 function exclusion(targetOrConfig, key, descriptor) {
-  return (0, _base.base)(targetOrConfig, key, descriptor, _exclusion.ExclusionRule);
+  return (0, _baseDecorator.base)(targetOrConfig, key, descriptor, _exclusion.ExclusionRule);
 }
 
 function inclusion(targetOrConfig, key, descriptor) {
-  return (0, _base.base)(targetOrConfig, key, descriptor, _inclusion.InclusionRule);
+  return (0, _baseDecorator.base)(targetOrConfig, key, descriptor, _inclusion.InclusionRule);
 }
 
 function format(targetOrConfig, key, descriptor) {
-  return (0, _base.base)(targetOrConfig, key, descriptor, _format.FormatRule);
+  return (0, _baseDecorator.base)(targetOrConfig, key, descriptor, _format.FormatRule);
 }
 
 function url(targetOrConfig, key, descriptor) {
-  return (0, _base.base)(targetOrConfig, key, descriptor, _url.UrlRule);
+  return (0, _baseDecorator.base)(targetOrConfig, key, descriptor, _url.UrlRule);
 }
 
 function numericality(targetOrConfig, key, descriptor) {
-  return (0, _base.base)(targetOrConfig, key, descriptor, _numericality.NumericalityRule);
+  return (0, _baseDecorator.base)(targetOrConfig, key, descriptor, _numericality.NumericalityRule);
 }

@@ -1,10 +1,10 @@
-define(['exports', './decorators', './validation-engine', './validator', './validation-reporter', 'aurelia-validation'], function (exports, _decorators, _validationEngine, _validator, _validationReporter, _aureliaValidation) {
+define(['exports', './decorators', './validation-engine', './validator', './validation-reporter', './validation-renderer', 'aurelia-validation'], function (exports, _decorators, _validationEngine, _validator, _validationReporter, _validationRenderer, _aureliaValidation) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
     value: true
   });
-  exports.ValidationReporter = exports.Validator = exports.ValidationEngine = exports.numericality = exports.url = exports.format = exports.inclusion = exports.exclusion = exports.equality = exports.email = exports.datetime = exports.date = exports.required = exports.length = undefined;
+  exports.ValidationRenderer = exports.ValidationReporter = exports.Validator = exports.ValidationEngine = exports.numericality = exports.url = exports.format = exports.inclusion = exports.exclusion = exports.equality = exports.email = exports.datetime = exports.date = exports.required = exports.length = undefined;
   Object.defineProperty(exports, 'length', {
     enumerable: true,
     get: function () {
@@ -89,9 +89,16 @@ define(['exports', './decorators', './validation-engine', './validator', './vali
       return _validationReporter.ValidationReporter;
     }
   });
+  Object.defineProperty(exports, 'ValidationRenderer', {
+    enumerable: true,
+    get: function () {
+      return _validationRenderer.ValidationRenderer;
+    }
+  });
   exports.configure = configure;
-  function configure(aurelia) {
-    aurelia.container.registerHandler(_aureliaValidation.Validator, _validator.Validator);
-    aurelia.container.registerHandler(_aureliaValidation.ValidationReporter, _validationReporter.ValidationReporter);
+  function configure(config) {
+    config.container.registerHandler(_aureliaValidation.Validator, _validator.Validator);
+    config.container.registerHandler(_aureliaValidation.ValidationReporter, _validationReporter.ValidationReporter);
+    config.globalResources('./validate-binding-behavior');
   }
 });

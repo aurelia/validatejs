@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.ValidationReporter = exports.Validator = exports.ValidationEngine = exports.numericality = exports.url = exports.format = exports.inclusion = exports.exclusion = exports.equality = exports.email = exports.datetime = exports.date = exports.required = exports.length = undefined;
+exports.ValidationRenderer = exports.ValidationReporter = exports.Validator = exports.ValidationEngine = exports.numericality = exports.url = exports.format = exports.inclusion = exports.exclusion = exports.equality = exports.email = exports.datetime = exports.date = exports.required = exports.length = undefined;
 
 var _decorators = require('./decorators');
 
@@ -100,11 +100,21 @@ Object.defineProperty(exports, 'ValidationReporter', {
     return _validationReporter.ValidationReporter;
   }
 });
+
+var _validationRenderer = require('./validation-renderer');
+
+Object.defineProperty(exports, 'ValidationRenderer', {
+  enumerable: true,
+  get: function get() {
+    return _validationRenderer.ValidationRenderer;
+  }
+});
 exports.configure = configure;
 
 var _aureliaValidation = require('aurelia-validation');
 
-function configure(aurelia) {
-  aurelia.container.registerHandler(_aureliaValidation.Validator, _validator.Validator);
-  aurelia.container.registerHandler(_aureliaValidation.ValidationReporter, _validationReporter.ValidationReporter);
+function configure(config) {
+  config.container.registerHandler(_aureliaValidation.Validator, _validator.Validator);
+  config.container.registerHandler(_aureliaValidation.ValidationReporter, _validationReporter.ValidationReporter);
+  config.globalResources('./validate-binding-behavior');
 }

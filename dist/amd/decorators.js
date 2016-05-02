@@ -1,4 +1,4 @@
-define(['exports', './rules/base', './rules/length', './rules/required', './rules/date', './rules/datetime', './rules/email', './rules/equality', './rules/exclusion', './rules/inclusion', './rules/format', './rules/url', './rules/numericality'], function (exports, _base, _length, _required, _date, _datetime, _email, _equality, _exclusion, _inclusion, _format, _url, _numericality) {
+define(['exports', './base-decorator', './rules/length', './rules/required', './rules/date', './rules/datetime', './rules/email', './rules/equality', './rules/exclusion', './rules/inclusion', './rules/format', './rules/url', './rules/numericality'], function (exports, _baseDecorator, _length, _required, _date, _datetime, _email, _equality, _exclusion, _inclusion, _format, _url, _numericality) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -16,46 +16,46 @@ define(['exports', './rules/base', './rules/length', './rules/required', './rule
   exports.url = url;
   exports.numericality = numericality;
   function length(targetOrConfig, key, descriptor) {
-    return (0, _base.base)(targetOrConfig, key, descriptor, _length.LengthRule);
+    return (0, _baseDecorator.base)(targetOrConfig, key, descriptor, _length.LengthRule);
   }
 
   function required(targetOrConfig, key, descriptor) {
-    return (0, _base.base)(targetOrConfig, key, descriptor, _required.RequiredRule);
+    return (0, _baseDecorator.base)(targetOrConfig, key, descriptor, _required.RequiredRule);
   }
 
   function date(targetOrConfig, key, descriptor) {
-    return (0, _base.base)(targetOrConfig, key, descriptor, _date.DateRule);
+    return (0, _baseDecorator.base)(targetOrConfig, key, descriptor, _date.DateRule);
   }
 
   function datetime(targetOrConfig, key, descriptor) {
-    return (0, _base.base)(targetOrConfig, key, descriptor, _datetime.DatetimeRule);
+    return (0, _baseDecorator.base)(targetOrConfig, key, descriptor, _datetime.DatetimeRule);
   }
 
   function email(targetOrConfig, key, descriptor) {
-    return (0, _base.base)(targetOrConfig, key, descriptor, _email.EmailRule);
+    return (0, _baseDecorator.base)(targetOrConfig, key, descriptor, _email.EmailRule);
   }
 
   function equality(targetOrConfig, key, descriptor) {
-    return (0, _base.base)(targetOrConfig, key, descriptor, _equality.EqualityRule);
+    return (0, _baseDecorator.base)(targetOrConfig, key, descriptor, _equality.EqualityRule);
   }
 
   function exclusion(targetOrConfig, key, descriptor) {
-    return (0, _base.base)(targetOrConfig, key, descriptor, _exclusion.ExclusionRule);
+    return (0, _baseDecorator.base)(targetOrConfig, key, descriptor, _exclusion.ExclusionRule);
   }
 
   function inclusion(targetOrConfig, key, descriptor) {
-    return (0, _base.base)(targetOrConfig, key, descriptor, _inclusion.InclusionRule);
+    return (0, _baseDecorator.base)(targetOrConfig, key, descriptor, _inclusion.InclusionRule);
   }
 
   function format(targetOrConfig, key, descriptor) {
-    return (0, _base.base)(targetOrConfig, key, descriptor, _format.FormatRule);
+    return (0, _baseDecorator.base)(targetOrConfig, key, descriptor, _format.FormatRule);
   }
 
   function url(targetOrConfig, key, descriptor) {
-    return (0, _base.base)(targetOrConfig, key, descriptor, _url.UrlRule);
+    return (0, _baseDecorator.base)(targetOrConfig, key, descriptor, _url.UrlRule);
   }
 
   function numericality(targetOrConfig, key, descriptor) {
-    return (0, _base.base)(targetOrConfig, key, descriptor, _numericality.NumericalityRule);
+    return (0, _baseDecorator.base)(targetOrConfig, key, descriptor, _numericality.NumericalityRule);
   }
 });

@@ -1,6 +1,6 @@
 'use strict';
 
-System.register(['./decorators', './validation-engine', 'aurelia-validation', './validator', './validation-reporter'], function (_export, _context) {
+System.register(['./decorators', './validation-engine', 'aurelia-validation', './validator', './validation-reporter', './validation-renderer'], function (_export, _context) {
   var Validator, ValidateJSValidator, ValidationReporter, ValidateJSReporter;
   return {
     setters: [function (_decorators) {
@@ -38,11 +38,17 @@ System.register(['./decorators', './validation-engine', 'aurelia-validation', '.
       _exportObj4.ValidationReporter = _validationReporter.ValidationReporter;
 
       _export(_exportObj4);
+    }, function (_validationRenderer) {
+      var _exportObj5 = {};
+      _exportObj5.ValidationRenderer = _validationRenderer.ValidationRenderer;
+
+      _export(_exportObj5);
     }],
     execute: function () {
-      function configure(aurelia) {
-        aurelia.container.registerHandler(Validator, ValidateJSValidator);
-        aurelia.container.registerHandler(ValidationReporter, ValidateJSReporter);
+      function configure(config) {
+        config.container.registerHandler(Validator, ValidateJSValidator);
+        config.container.registerHandler(ValidationReporter, ValidateJSReporter);
+        config.globalResources('./validate-binding-behavior');
       }
 
       _export('configure', configure);

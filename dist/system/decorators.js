@@ -1,10 +1,10 @@
 'use strict';
 
-System.register(['./rules/base', './rules/length', './rules/required', './rules/date', './rules/datetime', './rules/email', './rules/equality', './rules/exclusion', './rules/inclusion', './rules/format', './rules/url', './rules/numericality'], function (_export, _context) {
+System.register(['./base-decorator', './rules/length', './rules/required', './rules/date', './rules/datetime', './rules/email', './rules/equality', './rules/exclusion', './rules/inclusion', './rules/format', './rules/url', './rules/numericality'], function (_export, _context) {
   var base, LengthRule, RequiredRule, DateRule, DatetimeRule, EmailRule, EqualityRule, ExclusionRule, InclusionRule, FormatRule, UrlRule, NumericalityRule;
   return {
-    setters: [function (_rulesBase) {
-      base = _rulesBase.base;
+    setters: [function (_baseDecorator) {
+      base = _baseDecorator.base;
     }, function (_rulesLength) {
       LengthRule = _rulesLength.LengthRule;
     }, function (_rulesRequired) {

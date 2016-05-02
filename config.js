@@ -40,11 +40,6 @@ System.config({
     "npm:assert@1.3.0": {
       "util": "npm:util@0.10.3"
     },
-    "npm:aurelia-dependency-injection@1.0.0-beta.1.2.0": {
-      "aurelia-logging": "npm:aurelia-logging@1.0.0-beta.1.2.0",
-      "aurelia-metadata": "npm:aurelia-metadata@1.0.0-beta.1.2.0",
-      "aurelia-pal": "npm:aurelia-pal@1.0.0-beta.1.2.0"
-    },
     "npm:aurelia-dependency-injection@1.0.0-beta.1.2.2": {
       "aurelia-logging": "npm:aurelia-logging@1.0.0-beta.1.2.0",
       "aurelia-metadata": "npm:aurelia-metadata@1.0.0-beta.1.2.0",
