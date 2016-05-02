@@ -7,6 +7,13 @@ class ConfigStub {
   container = {
     registerHandler: function () {}
   }
+  aurelia = {
+    use: {
+      globalResources: () => {
+
+      }
+    }
+  }
 }
 
 describe('the Aurelia configuration', () => {

@@ -8,7 +8,8 @@ import {ValidationReporter as ValidateJSReporter} from './validation-reporter';
 export {ValidationReporter} from './validation-reporter';
 export {ValidationRenderer} from './validation-renderer';
 
-export function configure(aurelia) {
-  aurelia.container.registerHandler(Validator, ValidateJSValidator);
-  aurelia.container.registerHandler(ValidationReporter, ValidateJSReporter);
+export function configure(config) {
+  config.container.registerHandler(Validator, ValidateJSValidator);
+  config.container.registerHandler(ValidationReporter, ValidateJSReporter);
+  config.globalResources('./validate-binding-behavior');
 }

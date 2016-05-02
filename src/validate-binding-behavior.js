@@ -1,7 +1,5 @@
-import {EventManager} from 'aurelia-binding';
-import {ValidationEngine} from 'aurelia-validatejs';
-import {getContextFor} from 'aurelia-binding';
-import {ValidationRenderer} from 'aurelia-validatejs';
+import {ValidationEngine} from './validation-engine';
+import {ValidationRenderer} from './validation-renderer';
 
 export class ValidateBindingBehavior {
   static inject = [ValidationRenderer];
