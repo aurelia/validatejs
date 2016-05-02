@@ -9,14 +9,14 @@
   ],
   "homepage": "http://aurelia.io",
   "bugs": {
-    "url": "https://github.com/pwkad/validate.js/issues"
+    "url": "https://github.com/aurelia/validatejs/issues"
   },
-  "license": "CC0-1.0",
+  "license": "MIT",
   "author": "Patrick Walters <patrickwaltersc21@yahoo.com> (http://patrickwalters.net/)",
   "main": "dist/commonjs/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/pwkad/validate.js"
+    "url": "https://github.com/aurelia/validatejs"
   },
   "jspm": {
     "registry": "npm",
