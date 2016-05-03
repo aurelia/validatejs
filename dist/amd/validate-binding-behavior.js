@@ -1,4 +1,4 @@
-define(['exports', './validation-engine', './validation-renderer'], function (exports, _validationEngine, _validationRenderer) {
+define(['exports', './validation-renderer'], function (exports, _validationRenderer) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -25,7 +25,7 @@ define(['exports', './validation-engine', './validation-renderer'], function (ex
       var _this = this;
 
       var targetProperty = void 0;
-      var target = void 0;
+
       var reporter = void 0;
       targetProperty = this.getTargetProperty(binding);
 
@@ -39,11 +39,7 @@ define(['exports', './validation-engine', './validation-renderer'], function (ex
       });
     };
 
-    ValidateBindingBehavior.prototype.unbind = function unbind(binding, source) {
-      var targetProperty = this.getTargetProperty(source);
-
-      var reporter = this.getReporter(source);
-    };
+    ValidateBindingBehavior.prototype.unbind = function unbind(binding, source) {};
 
     ValidateBindingBehavior.prototype.getTargetProperty = function getTargetProperty(binding) {
       var targetProperty = void 0;

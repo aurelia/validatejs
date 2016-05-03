@@ -1,6 +1,5 @@
 var _class, _temp;
 
-import { ValidationEngine } from './validation-engine';
 import { ValidationRenderer } from './validation-renderer';
 
 export let ValidateBindingBehavior = (_temp = _class = class ValidateBindingBehavior {
@@ -9,7 +8,7 @@ export let ValidateBindingBehavior = (_temp = _class = class ValidateBindingBeha
   }
   bind(binding, source) {
     let targetProperty;
-    let target;
+
     let reporter;
     targetProperty = this.getTargetProperty(binding);
 
@@ -22,11 +21,7 @@ export let ValidateBindingBehavior = (_temp = _class = class ValidateBindingBeha
       this.renderer.renderErrors(binding.target, relevantErrors);
     });
   }
-  unbind(binding, source) {
-    let targetProperty = this.getTargetProperty(source);
-
-    let reporter = this.getReporter(source);
-  }
+  unbind(binding, source) {}
   getTargetProperty(binding) {
     let targetProperty;
     if (binding.sourceExpression && binding.sourceExpression.expression && binding.sourceExpression.expression.name) {

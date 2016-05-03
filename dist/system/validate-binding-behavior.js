@@ -1,7 +1,7 @@
 'use strict';
 
-System.register(['./validation-engine', './validation-renderer'], function (_export, _context) {
-  var ValidationEngine, ValidationRenderer, _class, _temp, ValidateBindingBehavior;
+System.register(['./validation-renderer'], function (_export, _context) {
+  var ValidationRenderer, _class, _temp, ValidateBindingBehavior;
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -10,9 +10,7 @@ System.register(['./validation-engine', './validation-renderer'], function (_exp
   }
 
   return {
-    setters: [function (_validationEngine) {
-      ValidationEngine = _validationEngine.ValidationEngine;
-    }, function (_validationRenderer) {
+    setters: [function (_validationRenderer) {
       ValidationRenderer = _validationRenderer.ValidationRenderer;
     }],
     execute: function () {
@@ -27,7 +25,7 @@ System.register(['./validation-engine', './validation-renderer'], function (_exp
           var _this = this;
 
           var targetProperty = void 0;
-          var target = void 0;
+
           var reporter = void 0;
           targetProperty = this.getTargetProperty(binding);
 
@@ -41,11 +39,7 @@ System.register(['./validation-engine', './validation-renderer'], function (_exp
           });
         };
 
-        ValidateBindingBehavior.prototype.unbind = function unbind(binding, source) {
-          var targetProperty = this.getTargetProperty(source);
-
-          var reporter = this.getReporter(source);
-        };
+        ValidateBindingBehavior.prototype.unbind = function unbind(binding, source) {};
 
         ValidateBindingBehavior.prototype.getTargetProperty = function getTargetProperty(binding) {
           var targetProperty = void 0;

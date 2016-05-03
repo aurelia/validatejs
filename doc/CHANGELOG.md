@@ -1,3 +1,17 @@
+## 0.1.0 (2016-05-03)
+
+
+#### Bug Fixes
+
+* **package.json:** fix dependencies ([3415f243](https://github.com/aurelia/validatejs/commit/3415f243b158682bbcb0b45adaac2838a536fb33))
+* **tests:** fix tests for validator ([be8d298a](https://github.com/aurelia/validatejs/commit/be8d298a1ec742bf239a71cfa78fe4e8379cbdeb))
+
+
+#### Features
+
+* **renderer:** add bs renderer binding behavior ([438fe51e](https://github.com/aurelia/validatejs/commit/438fe51ef639f292f63e88c3ee767ca472da39e3))
+
+
 ### 1.0.0-beta.1.0.0 (2016-01-29)
 
 

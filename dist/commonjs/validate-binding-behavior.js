@@ -7,8 +7,6 @@ exports.ValidateBindingBehavior = undefined;
 
 var _class, _temp;
 
-var _validationEngine = require('./validation-engine');
-
 var _validationRenderer = require('./validation-renderer');
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -24,7 +22,7 @@ var ValidateBindingBehavior = exports.ValidateBindingBehavior = (_temp = _class 
     var _this = this;
 
     var targetProperty = void 0;
-    var target = void 0;
+
     var reporter = void 0;
     targetProperty = this.getTargetProperty(binding);
 
@@ -38,11 +36,7 @@ var ValidateBindingBehavior = exports.ValidateBindingBehavior = (_temp = _class 
     });
   };
 
-  ValidateBindingBehavior.prototype.unbind = function unbind(binding, source) {
-    var targetProperty = this.getTargetProperty(source);
-
-    var reporter = this.getReporter(source);
-  };
+  ValidateBindingBehavior.prototype.unbind = function unbind(binding, source) {};
 
   ValidateBindingBehavior.prototype.getTargetProperty = function getTargetProperty(binding) {
     var targetProperty = void 0;
