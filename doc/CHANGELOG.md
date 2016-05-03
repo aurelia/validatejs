@@ -1,3 +1,11 @@
+## 0.2.0 (2016-05-03)
+
+
+#### Bug Fixes
+
+* **package:** update polyfills version and add bower.json ([6acc623c](https://github.com/aurelia/validatejs/commit/6acc623c50a417b2c304ba523ad7005cc91bc04a))
+
+
 ## 0.1.0 (2016-05-03)
 
 
