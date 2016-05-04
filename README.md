@@ -185,7 +185,7 @@ export class Model {
 
 ### Presence / Required
 
-Ensure it is a number (additional validation available, check validate.js documentation for more options)
+Ensure it is set
 
 ```es6
 export class Model {
