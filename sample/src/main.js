@@ -4,5 +4,13 @@ export function configure(aurelia) {
     .developmentLogging()
     .plugin('aurelia-validatejs');
 
-  aurelia.start().then(a => a.setRoot('app'));
+  aurelia.start().then(a => {
+    a.setRoot('app');
+
+    System.config({
+      paths: {
+        "*": "dist/*"
+      }
+    })
+  });
 }
