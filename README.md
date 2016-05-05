@@ -291,9 +291,15 @@ There is a sample application provided that runs using the plugin itself.  To ru
   ```shell
   jspm install
   ```
+4. Do an initial build of the sample app files:
 
-4. You can now run sample application:
+  ```shell
+  gulp build-sample
+  ```
+5. You can now run sample application:
 
   ```shell
   gulp start
   ```
+
+It will watch for changes to both `src` and `sample/src` and reload the browser on change.
