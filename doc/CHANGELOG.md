@@ -1,3 +1,11 @@
+### 0.2.1 (2016-05-05)
+
+
+#### Bug Fixes
+
+* **deps:** fix other polyfills version ([f6038dfc](https://github.com/aurelia/validatejs/commit/f6038dfcd4e83c04ca60a2952e639884a538abc4))
+
+
 ## 0.2.0 (2016-05-03)
 
 
