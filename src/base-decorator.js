@@ -11,8 +11,18 @@ export function base(targetOrConfig, key, descriptor, Rule) {
     // TODO: REMOVE
     let innerPropertyName = `_${key2}`;
 
-    if (descriptor2.initializer) {
-      target[innerPropertyName] = descriptor2.initializer();
+    // typescript or babel?
+    let babel = descriptor2 !== undefined;
+
+    if (babel) {
+      // babel passes in the property descriptor with a method to get the initial value.
+
+      // set the initial value of the property if it is defined.
+      if (typeof descriptor2.initializer === 'function') {
+        target[innerPropertyName] = descriptor2.initializer();
+      }
+    } else {
+      descriptor2 = {};
     }
 
     delete descriptor2.writable;
