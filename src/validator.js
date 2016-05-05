@@ -32,8 +32,12 @@ export class Validator {
     this.config.addRule(this.currentProperty, ValidationRule.lengthRule(configuration));
     return this;
   }
+  presence() {
+    this.config.addRule(this.currentProperty, ValidationRule.presence());
+    return this;
+  }
   required() {
-    this.config.addRule(this.currentProperty, ValidationRule.required());
+    this.config.addRule(this.currentProperty, ValidationRule.presence());
     return this;
   }
   numericality() {

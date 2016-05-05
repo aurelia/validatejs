@@ -6,7 +6,7 @@ import {validationMetadataKey} from 'aurelia-validation';
 export function base(targetOrConfig, key, descriptor, Rule) {
   let deco = function(target, key2, descriptor2) {
     let config = metadata.getOrCreateOwn(validationMetadataKey, ValidationConfig, target);
-    config.addRule(key2, new Rule(targetOrConfig));
+    config.addRule(key2, Rule(targetOrConfig));
 
     // TODO: REMOVE
     let innerPropertyName = `_${key2}`;

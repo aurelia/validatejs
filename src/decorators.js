@@ -5,8 +5,12 @@ export function length(targetOrConfig, key, descriptor) {
   return base(targetOrConfig, key, descriptor, ValidationRule.lengthRule);
 }
 
+export function presence(targetOrConfig, key, descriptor) {
+  return base(targetOrConfig, key, descriptor, ValidationRule.presence);
+}
+
 export function required(targetOrConfig, key, descriptor) {
-  return base(targetOrConfig, key, descriptor, ValidationRule.required);
+  return base(targetOrConfig, key, descriptor, ValidationRule.presence);
 }
 
 export function date(targetOrConfig, key, descriptor) {

@@ -20,33 +20,33 @@ export class ValidationRule {
     throw new Error('Invalid target or property name.');
   }
   static date() {
-    return new ValidationRule('date', true)
+    return new ValidationRule('date', true);
   }
   static datetime() {
-    return new ValidationRule('datetime', true)
+    return new ValidationRule('datetime', true);
   }
   static email() {
-    return new ValidationRule('email', true)
+    return new ValidationRule('email', true);
+  }
+  static equality(config) {
+    return new ValidationRule('equality', config);
   }
   static exclusion(config) {
-    return new ValidationRule('exclusion', config)
+    return new ValidationRule('exclusion', config);
   }
   static format(config) {
-    return new ValidationRule('format', config)
+    return new ValidationRule('format', config);
   }
   static inclusion(config) {
-    return new ValidationRule('inclusion', config)
+    return new ValidationRule('inclusion', config);
   }
   static lengthRule(config) {
-    return new ValidationRule('length', config)
+    return new ValidationRule('length', config);
   }
   static numericality(config = true) {
-    return new ValidationRule('numericality', config)
+    return new ValidationRule('numericality', config);
   }
   static presence() {
-    return new ValidationRule('presence', true);
-  }
-  static required() {
     return new ValidationRule('presence', true);
   }
   static url() {
