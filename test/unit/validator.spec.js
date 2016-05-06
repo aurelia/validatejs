@@ -1,13 +1,11 @@
 import {Validator} from 'src/validator';
 import {ValidationReporter} from 'src/validation-reporter';
-import {ValidationEngine} from 'aurelia-validation';
-import {ValidationError} from 'src/validation-error';
+import {ValidationEngine, ValidationError, validationMetadataKey} from 'aurelia-validation';
 import {Container} from 'aurelia-dependency-injection';
-import {validationMetadataKey} from 'aurelia-validation';
 import {ValidationConfig} from 'src/validation-config';
 import {metadata} from 'aurelia-metadata';
 
-describe('ValidationEngine', () => {
+describe('Validator', () => {
   let container;
   let validation;
   let reporter;

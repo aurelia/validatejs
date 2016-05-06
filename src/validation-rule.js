@@ -1,5 +1,5 @@
 import validate from 'validate.js';
-import {ValidationError} from './validation-error';
+import {ValidationError} from 'aurelia-validation';
 
 export class ValidationRule {
   name = '';
@@ -13,7 +13,8 @@ export class ValidationRule {
       let validator = { [propName]: { [this.name]: this.config } };
       let result = validate(target, validator);
       if (result) {
-        result = new ValidationError(result);
+        let error = cleanResult(result);
+        result = new ValidationError(error);
       }
       return result;
     }
@@ -52,4 +53,17 @@ export class ValidationRule {
   static url() {
     return new ValidationRule('url', true);
   }
+}
+
+export function cleanResult(data) {
+  let result = {};
+  for (let prop in data) {
+    if (data.hasOwnProperty(prop)) {
+      result = {
+        propertyName: prop,
+        message: data[prop][0]
+      };
+    }
+  }
+  return result;
 }

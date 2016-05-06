@@ -1,4 +1,4 @@
-import {ValidationRule} from 'src/validation-rule';
+import {ValidationRule, cleanResult} from 'src/validation-rule';
 
 describe('ValidationRule', () => {
   let subject;
@@ -34,6 +34,15 @@ describe('ValidationRule', () => {
       validationRule = new ValidationRule('length', { minimum: 10 });
       let result = validationRule.validate(target, 'name');
       expect(result).not.toEqual(undefined);
+    });
+  });
+
+  describe('cleanResult()', () => {
+    it('cleans the result to a proper property names for a validation error', () => {
+      let error = { name: ["Error message"] };
+      let result = cleanResult(error);
+      expect(result.propertyName).toEqual('name');
+      expect(result.message).toEqual('Error message');
     });
   });
 });
