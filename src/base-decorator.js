@@ -1,7 +1,7 @@
 import {metadata} from 'aurelia-metadata';
 import {ValidationConfig} from './validation-config';
 import {ValidationEngine} from './validation-engine';
-import {validationMetadataKey} from 'aurelia-validation';
+import {validationMetadataKey} from './metadata-key';
 
 export function base(targetOrConfig, key, descriptor, Rule) {
   let deco = function(target, key2, descriptor2) {

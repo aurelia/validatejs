@@ -1,8 +1,9 @@
 // import {ValidationEngine} from './validation-engine';
 import {ValidationRenderer} from './validation-renderer';
+import {inject} from 'aurelia-dependency-injection';
 
+@inject(ValidationRenderer)
 export class ValidateBindingBehavior {
-  static inject = [ValidationRenderer];
   constructor(renderer) {
     this.renderer = renderer;
   }
