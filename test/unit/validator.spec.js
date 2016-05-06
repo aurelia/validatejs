@@ -1,6 +1,6 @@
 import {Validator} from 'src/validator';
 import {ValidationReporter} from 'src/validation-reporter';
-import {ValidationEngine} from 'src/validation-engine';
+import {ValidationEngine} from 'aurelia-validation';
 import {ValidationError} from 'src/validation-error';
 import {Container} from 'aurelia-dependency-injection';
 import {validationMetadataKey} from 'aurelia-validation';
