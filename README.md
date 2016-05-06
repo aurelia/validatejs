@@ -299,7 +299,7 @@ There is a sample application provided that runs using the plugin itself.  To ru
 5. You can now run sample application:
 
   ```shell
-  gulp start
+  gulp watch
   ```
 
 It will watch for changes to both `src` and `sample/src` and reload the browser on change.
