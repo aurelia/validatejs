@@ -1,4 +1,4 @@
-import {validationMetadataKey} from 'aurelia-validation';
+import {validationMetadataKey} from './metadata-key';
 import {ValidationConfig} from './validation-config';
 import {ValidationEngine} from './validation-engine';
 import {ValidationRule} from './validation-rule';
