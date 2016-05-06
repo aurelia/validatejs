@@ -196,8 +196,12 @@ System.config({
       "aurelia-task-queue": "npm:aurelia-task-queue@1.0.0-beta.1.2.0"
     },
     "npm:aurelia-validation@0.8.0": {
+      "aurelia-binding": "npm:aurelia-binding@1.0.0-beta.1.3.4",
       "aurelia-dependency-injection": "npm:aurelia-dependency-injection@1.0.0-beta.1.2.2",
-      "aurelia-metadata": "npm:aurelia-metadata@1.0.0-beta.1.2.0"
+      "aurelia-loader": "npm:aurelia-loader@1.0.0-beta.1.2.0",
+      "aurelia-logging": "npm:aurelia-logging@1.0.0-beta.1.2.0",
+      "aurelia-metadata": "npm:aurelia-metadata@1.0.0-beta.1.2.0",
+      "aurelia-templating": "npm:aurelia-templating@1.0.0-beta.1.2.5"
     },
     "npm:babel-runtime@5.8.38": {
       "process": "github:jspm/nodelibs-process@0.1.2"
