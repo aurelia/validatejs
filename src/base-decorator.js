@@ -3,10 +3,10 @@ import {ValidationConfig} from './validation-config';
 import {ValidationEngine} from './validation-engine';
 import {validationMetadataKey} from './metadata-key';
 
-export function base(targetOrConfig, key, descriptor, Rule) {
+export function base(targetOrConfig, key, descriptor, rule) {
   let deco = function(target, key2, descriptor2) {
     let config = metadata.getOrCreateOwn(validationMetadataKey, ValidationConfig, target);
-    config.addRule(key2, Rule(targetOrConfig));
+    config.addRule(key2, rule(targetOrConfig));
 
     // TODO: REMOVE
     let innerPropertyName = `_${key2}`;
