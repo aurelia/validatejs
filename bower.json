@@ -8,6 +8,8 @@
     "validate.js"
   ],
   "homepage": "http://aurelia.io",
+  "main": "dist/commonjs/index.js",
+  "moduleType": "node",
   "license": "MIT",
   "authors": [
     "Patrick Walters <patrickwaltersc21@yahoo.com> (http://patrickwalters.net/)"
