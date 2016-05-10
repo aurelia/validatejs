@@ -1,7 +1,7 @@
 'use strict';
 
-System.register(['aurelia-validation', './validation-config', './validation-engine', 'aurelia-metadata', './rules/required', './rules/length', './rules/numericality', './rules/email', './rules/inclusion', './rules/exclusion', './rules/equality', './rules/format', './rules/url', './rules/date', './rules/datetime'], function (_export, _context) {
-  var validationMetadataKey, ValidationConfig, ValidationEngine, metadata, RequiredRule, LengthRule, NumericalityRule, EmailRule, InclusionRule, ExclusionRule, EqualityRule, FormatRule, UrlRule, DateRule, DatetimeRule, Validator;
+System.register(['./metadata-key', './validation-config', './validation-engine', './validation-rule', 'aurelia-metadata'], function (_export, _context) {
+  var validationMetadataKey, ValidationConfig, ValidationEngine, ValidationRule, metadata, Validator;
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -10,49 +10,32 @@ System.register(['aurelia-validation', './validation-config', './validation-engi
   }
 
   return {
-    setters: [function (_aureliaValidation) {
-      validationMetadataKey = _aureliaValidation.validationMetadataKey;
+    setters: [function (_metadataKey) {
+      validationMetadataKey = _metadataKey.validationMetadataKey;
     }, function (_validationConfig) {
       ValidationConfig = _validationConfig.ValidationConfig;
     }, function (_validationEngine) {
       ValidationEngine = _validationEngine.ValidationEngine;
+    }, function (_validationRule) {
+      ValidationRule = _validationRule.ValidationRule;
     }, function (_aureliaMetadata) {
       metadata = _aureliaMetadata.metadata;
-    }, function (_rulesRequired) {
-      RequiredRule = _rulesRequired.RequiredRule;
-    }, function (_rulesLength) {
-      LengthRule = _rulesLength.LengthRule;
-    }, function (_rulesNumericality) {
-      NumericalityRule = _rulesNumericality.NumericalityRule;
-    }, function (_rulesEmail) {
-      EmailRule = _rulesEmail.EmailRule;
-    }, function (_rulesInclusion) {
-      InclusionRule = _rulesInclusion.InclusionRule;
-    }, function (_rulesExclusion) {
-      ExclusionRule = _rulesExclusion.ExclusionRule;
-    }, function (_rulesEquality) {
-      EqualityRule = _rulesEquality.EqualityRule;
-    }, function (_rulesFormat) {
-      FormatRule = _rulesFormat.FormatRule;
-    }, function (_rulesUrl) {
-      UrlRule = _rulesUrl.UrlRule;
-    }, function (_rulesDate) {
-      DateRule = _rulesDate.DateRule;
-    }, function (_rulesDatetime) {
-      DatetimeRule = _rulesDatetime.DatetimeRule;
     }],
     execute: function () {
       _export('Validator', Validator = function () {
-        function Validator() {
+        function Validator(object) {
           _classCallCheck(this, Validator);
+
+          this.object = object;
         }
 
         Validator.prototype.validate = function validate(prop) {
+          var config = metadata.getOrCreateOwn(validationMetadataKey, ValidationConfig, this.object);
           var reporter = ValidationEngine.getValidationReporter(this.object);
           if (prop) {
-            this.config.validate(this.object, reporter, prop);
+            config.validate(this.object, reporter, prop);
           } else {
-            this.config.validate(this.object, reporter);
+            config.validate(this.object, reporter);
           }
         };
 
@@ -60,11 +43,7 @@ System.register(['aurelia-validation', './validation-config', './validation-engi
           console.error('Not yet implemented');
         };
 
-        Validator.prototype.ensure = function ensure(object, prop) {
-          if (this.object && this.object !== object) {
-            throw new Error('Validator cannot handle multiple objects');
-          }
-          this.object = object;
+        Validator.prototype.ensure = function ensure(prop) {
           var config = metadata.getOrCreateOwn(validationMetadataKey, ValidationConfig, this.object);
           this.config = config;
           this.currentProperty = prop;
@@ -72,57 +51,62 @@ System.register(['aurelia-validation', './validation-config', './validation-engi
         };
 
         Validator.prototype.length = function length(configuration) {
-          this.config.addRule(this.currentProperty, new LengthRule(configuration));
+          this.config.addRule(this.currentProperty, ValidationRule.lengthRule(configuration));
+          return this;
+        };
+
+        Validator.prototype.presence = function presence() {
+          this.config.addRule(this.currentProperty, ValidationRule.presence());
           return this;
         };
 
         Validator.prototype.required = function required() {
-          this.config.addRule(this.currentProperty, new RequiredRule());
+          this.config.addRule(this.currentProperty, ValidationRule.presence());
           return this;
         };
 
         Validator.prototype.numericality = function numericality() {
-          this.config.addRule(this.currentProperty, new NumericalityRule());
+          this.config.addRule(this.currentProperty, ValidationRule.numericality());
           return this;
         };
 
         Validator.prototype.date = function date() {
-          this.config.addRule(this.currentProperty, new DateRule());
+          this.config.addRule(this.currentProperty, ValidationRule.date());
           return this;
         };
 
         Validator.prototype.datetime = function datetime() {
-          this.config.addRule(this.currentProperty, new DatetimeRule());
+          this.config.addRule(this.currentProperty, ValidationRule.datetime());
           return this;
         };
 
         Validator.prototype.email = function email() {
-          this.config.addRule(this.currentProperty, new EmailRule());
+          this.config.addRule(this.currentProperty, ValidationRule.email());
           return this;
         };
 
         Validator.prototype.equality = function equality(configuration) {
-          this.config.addRule(this.currentProperty, new EqualityRule(configuration));
+          this.config.addRule(this.currentProperty, ValidationRule.equality(configuration));
           return this;
         };
 
         Validator.prototype.format = function format(configuration) {
-          this.config.addRule(this.currentProperty, new FormatRule(configuration));
+          this.config.addRule(this.currentProperty, ValidationRule.format(configuration));
           return this;
         };
 
         Validator.prototype.inclusion = function inclusion(configuration) {
-          this.config.addRule(this.currentProperty, new InclusionRule(configuration));
+          this.config.addRule(this.currentProperty, ValidationRule.inclusion(configuration));
           return this;
         };
 
         Validator.prototype.exclusion = function exclusion(configuration) {
-          this.config.addRule(this.currentProperty, new ExclusionRule(configuration));
+          this.config.addRule(this.currentProperty, ValidationRule.exclusion(configuration));
           return this;
         };
 
         Validator.prototype.url = function url() {
-          this.config.addRule(this.currentProperty, new UrlRule());
+          this.config.addRule(this.currentProperty, ValidationRule.url());
           return this;
         };
 

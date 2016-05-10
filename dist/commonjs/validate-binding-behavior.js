@@ -5,13 +5,15 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.ValidateBindingBehavior = undefined;
 
-var _class, _temp;
+var _dec, _class;
 
 var _validationRenderer = require('./validation-renderer');
 
+var _aureliaDependencyInjection = require('aurelia-dependency-injection');
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var ValidateBindingBehavior = exports.ValidateBindingBehavior = (_temp = _class = function () {
+var ValidateBindingBehavior = exports.ValidateBindingBehavior = (_dec = (0, _aureliaDependencyInjection.inject)(_validationRenderer.ValidationRenderer), _dec(_class = function () {
   function ValidateBindingBehavior(renderer) {
     _classCallCheck(this, ValidateBindingBehavior);
 
@@ -63,4 +65,4 @@ var ValidateBindingBehavior = exports.ValidateBindingBehavior = (_temp = _class 
   };
 
   return ValidateBindingBehavior;
-}(), _class.inject = [_validationRenderer.ValidationRenderer], _temp);
+}()) || _class);

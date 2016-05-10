@@ -1,4 +1,4 @@
-define(['exports', './validation-renderer'], function (exports, _validationRenderer) {
+define(['exports', './validation-renderer', 'aurelia-dependency-injection'], function (exports, _validationRenderer, _aureliaDependencyInjection) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -12,9 +12,9 @@ define(['exports', './validation-renderer'], function (exports, _validationRende
     }
   }
 
-  var _class, _temp;
+  var _dec, _class;
 
-  var ValidateBindingBehavior = exports.ValidateBindingBehavior = (_temp = _class = function () {
+  var ValidateBindingBehavior = exports.ValidateBindingBehavior = (_dec = (0, _aureliaDependencyInjection.inject)(_validationRenderer.ValidationRenderer), _dec(_class = function () {
     function ValidateBindingBehavior(renderer) {
       _classCallCheck(this, ValidateBindingBehavior);
 
@@ -66,5 +66,5 @@ define(['exports', './validation-renderer'], function (exports, _validationRende
     };
 
     return ValidateBindingBehavior;
-  }(), _class.inject = [_validationRenderer.ValidationRenderer], _temp);
+  }()) || _class);
 });

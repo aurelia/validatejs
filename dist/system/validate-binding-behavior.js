@@ -1,7 +1,7 @@
 'use strict';
 
-System.register(['./validation-renderer'], function (_export, _context) {
-  var ValidationRenderer, _class, _temp, ValidateBindingBehavior;
+System.register(['./validation-renderer', 'aurelia-dependency-injection'], function (_export, _context) {
+  var ValidationRenderer, inject, _dec, _class, ValidateBindingBehavior;
 
   function _classCallCheck(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -12,9 +12,11 @@ System.register(['./validation-renderer'], function (_export, _context) {
   return {
     setters: [function (_validationRenderer) {
       ValidationRenderer = _validationRenderer.ValidationRenderer;
+    }, function (_aureliaDependencyInjection) {
+      inject = _aureliaDependencyInjection.inject;
     }],
     execute: function () {
-      _export('ValidateBindingBehavior', ValidateBindingBehavior = (_temp = _class = function () {
+      _export('ValidateBindingBehavior', ValidateBindingBehavior = (_dec = inject(ValidationRenderer), _dec(_class = function () {
         function ValidateBindingBehavior(renderer) {
           _classCallCheck(this, ValidateBindingBehavior);
 
@@ -66,7 +68,7 @@ System.register(['./validation-renderer'], function (_export, _context) {
         };
 
         return ValidateBindingBehavior;
-      }(), _class.inject = [ValidationRenderer], _temp));
+      }()) || _class));
 
       _export('ValidateBindingBehavior', ValidateBindingBehavior);
     }

@@ -1,8 +1,9 @@
-var _class, _temp;
+var _dec, _class;
 
 import { ValidationRenderer } from './validation-renderer';
+import { inject } from 'aurelia-dependency-injection';
 
-export let ValidateBindingBehavior = (_temp = _class = class ValidateBindingBehavior {
+export let ValidateBindingBehavior = (_dec = inject(ValidationRenderer), _dec(_class = class ValidateBindingBehavior {
   constructor(renderer) {
     this.renderer = renderer;
   }
@@ -43,4 +44,4 @@ export let ValidateBindingBehavior = (_temp = _class = class ValidateBindingBeha
     }
     return reporter;
   }
-}, _class.inject = [ValidationRenderer], _temp);
+}) || _class);

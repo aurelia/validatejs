@@ -5,46 +5,15 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.base = base;
 
-var _aureliaMetadata = require('aurelia-metadata');
+var _propertyObserver = require('./property-observer');
 
-var _validationConfig = require('./validation-config');
-
-var _validationEngine = require('./validation-engine');
-
-var _aureliaValidation = require('aurelia-validation');
-
-function base(targetOrConfig, key, descriptor, Rule) {
-  var deco = function deco(target, key2, descriptor2) {
-    var config = _aureliaMetadata.metadata.getOrCreateOwn(_aureliaValidation.validationMetadataKey, _validationConfig.ValidationConfig, target);
-    config.addRule(key2, new Rule(targetOrConfig));
-
-    var innerPropertyName = '_' + key2;
-
-    if (descriptor2.initializer) {
-      target[innerPropertyName] = descriptor2.initializer();
-    }
-
-    delete descriptor2.writable;
-    delete descriptor2.initializer;
-
-    descriptor2.get = function () {
-      return this[innerPropertyName];
-    };
-    descriptor2.set = function (newValue) {
-      var reporter = _validationEngine.ValidationEngine.getValidationReporter(this);
-
-      this[innerPropertyName] = newValue;
-
-      config.validate(this, reporter);
-    };
-
-    descriptor2.get.dependencies = [innerPropertyName];
-  };
-
+function base(targetOrConfig, key, descriptor, rule) {
   if (key) {
     var target = targetOrConfig;
     targetOrConfig = null;
-    return deco(target, key, descriptor);
+    return (0, _propertyObserver.observeProperty)(target, key, descriptor, targetOrConfig, rule);
   }
-  return deco;
+  return function (t, k, d) {
+    return (0, _propertyObserver.observeProperty)(t, k, d, targetOrConfig, rule);
+  };
 }
