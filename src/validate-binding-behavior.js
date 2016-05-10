@@ -1,4 +1,3 @@
-// import {ValidationEngine} from 'aurelia-validation';
 import {ValidationRenderer} from './validation-renderer';
 import {inject} from 'aurelia-dependency-injection';
 
