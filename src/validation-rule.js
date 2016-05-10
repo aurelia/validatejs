@@ -20,14 +20,14 @@ export class ValidationRule {
     }
     throw new Error('Invalid target or property name.');
   }
-  static date() {
-    return new ValidationRule('date', true);
+  static date(config = true) {
+    return new ValidationRule('date', config);
   }
-  static datetime() {
-    return new ValidationRule('datetime', true);
+  static datetime(config = true) {
+    return new ValidationRule('datetime', config);
   }
-  static email() {
-    return new ValidationRule('email', true);
+  static email(config = true) {
+    return new ValidationRule('email', config);
   }
   static equality(config) {
     return new ValidationRule('equality', config);
@@ -47,11 +47,11 @@ export class ValidationRule {
   static numericality(config = true) {
     return new ValidationRule('numericality', config);
   }
-  static presence() {
-    return new ValidationRule('presence', true);
+  static presence(config = true) {
+    return new ValidationRule('presence', config);
   }
-  static url() {
-    return new ValidationRule('url', true);
+  static url(config = true) {
+    return new ValidationRule('url', config);
   }
 }
 

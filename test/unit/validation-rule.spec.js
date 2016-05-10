@@ -45,4 +45,17 @@ describe('ValidationRule', () => {
       expect(result.message).toEqual('Error message');
     });
   });
+
+  describe('static .url', () => {
+    it('defaults to true if no config passed in', () => {
+      let result = ValidationRule.url();
+      expect(result.config).toEqual(true);
+    });
+
+    it('uses a config if passed in', () => {
+      let config = {blue: 'red'};
+      let result = ValidationRule.url(config);
+      expect(result.config).toEqual(config);
+    });
+  });
 });
