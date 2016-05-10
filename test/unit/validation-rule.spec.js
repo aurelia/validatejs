@@ -53,7 +53,7 @@ describe('ValidationRule', () => {
     });
 
     it('uses a config if passed in', () => {
-      let config = {blue: 'red'};
+      let config = { blue: 'red' };
       let result = ValidationRule.url(config);
       expect(result.config).toEqual(config);
     });

@@ -14,3 +14,19 @@ possible to have a single binding behavior that pulls in the renderer from the c
 infer the reporter from source.bindingContext and add a note to the blog post to explain that isn't needed long term but just for now.
 
 Can use getContextFor(source, propName); to get the object.
+
+
+
+let obj = { first: '' };
+
+let validator = new Validator(obj);
+
+validator(obj).ensure('first').required();
+
+validator(obj).validate();
+
+let two = class Person {
+  @required firstName;
+}
+
+this.validator = new Validator(two).validate();

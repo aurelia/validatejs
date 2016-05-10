@@ -1,33 +1,32 @@
-import {ValidationEngine, Validator, length, required, date, datetime, email, equality, url, numericality} from 'aurelia-validatejs';
+import {Validator, ValidationEngine, length, required, date, datetime, email, equality, url, numericality} from 'aurelia-validatejs';
 
 export class Fluent {
   model;
-  static inject = [Validator];
-  constructor(validator) {
+  constructor() {
     this.model = new Model();
-    this.validator = validator
-      .ensure(this.model, 'firstName')
+    this.validator = new Validator(this.model)
+      .ensure('firstName')
         .required()
         .length({minimum: 3, maximum: 10})
-      .ensure(this.model, 'lastName')
+      .ensure('lastName')
         .required()
-      .ensure(this.model, 'email')
+      .ensure('email')
         .email()
-      .ensure(this.model, 'password')
+      .ensure('password')
         .length({ minimum: 5, maximum: 25 })
-      .ensure(this.model, 'confirmPassword')
+      .ensure('confirmPassword')
         .equality('password')
-      .ensure(this.model, 'blueOrRed')
+      .ensure('blueOrRed')
         .inclusion(['blue', 'red'])
-      .ensure(this.model, 'gender')
+      .ensure('gender')
         .exclusion(['male'])
-      .ensure(this.model, 'website')
+      .ensure('website')
         .url()
-      .ensure(this.model, 'age')
+      .ensure('age')
         .numericality({ onlyInteger: true, lessThan: 115, greaterThan: 0 })
-      .ensure(this.model, 'zipCode')
+      .ensure('zipCode')
         .format(/\d{5}(-\d{4})?/);
-        ;
+
     this.reporter = ValidationEngine.getValidationReporter(this.model);
     this.observer = this.reporter.subscribe(result => {
       console.log(result);
