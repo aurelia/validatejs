@@ -20,7 +20,7 @@ gulp.task('doc-generate', function(){
 
 gulp.task('doc-extract', function(){
   return gulp.src([paths.doc + '/api.json'])
-    .pipe(typedocExtractor(paths.output + 'amd/' + paths.packageName))
+    .pipe(typedocExtractor(paths.packageName))
     .pipe(gulp.dest(paths.doc));
 });
 
