@@ -22,10 +22,9 @@ export class Model {
 }
 
 export class Model {
-  static inject = [Validator];
-  constructor(validator) {
-    this.validator = validator
-      .ensure(this, 'myDate')
+  constructor() {
+    this.validator = new Validator(this)
+      .ensure('myDate')
         .date();
   }
 }
@@ -41,10 +40,9 @@ export class Model {
 }
 
 export class Model {
-  static inject = [Validator];
-  constructor(validator) {
-    this.validator = validator
-      .ensure(this, 'myDate')
+  constructor() {
+    this.validator = new Validator(this)
+      .ensure('myDate')
         .datetime();
   }
 }
@@ -60,10 +58,9 @@ export class Model {
 }
 
 export class Model {
-  static inject = [Validator];
-  constructor(validator) {
-    this.validator = validator
-      .ensure(this, 'email')
+  constructor() {
+    this.validator = new Validator(this)
+      .ensure('email')
         .email();
   }
 }
@@ -79,10 +76,9 @@ export class Model {
 }
 
 export class Model {
-  static inject = [Validator];
-  constructor(validator) {
-    this.validator = validator
-      .ensure(this, 'confirmPassword')
+  constructor() {
+    this.validator = new Validator(this)
+      .ensure('confirmPassword')
         .equality('password');
   }
 }
@@ -98,10 +94,9 @@ export class Model {
 }
 
 export class Model {
-  static inject = [Validator];
-  constructor(validator) {
-    this.validator = validator
-      .ensure(this, 'color')
+  constructor() {
+    this.validator = new Validator(this)
+      .ensure('color')
         .exclusion(['blue']);
   }
 }
@@ -117,10 +112,9 @@ export class Model {
 }
 
 export class Model {
-  static inject = [Validator];
-  constructor(validator) {
-    this.validator = validator
-      .ensure(this, 'zipCode')
+  constructor() {
+    this.validator = new Validator(this)
+      .ensure('zipCode')
         .format(/\d{5}(-\d{4})?/);
   }
 }
@@ -136,10 +130,9 @@ export class Model {
 }
 
 export class Model {
-  static inject = [Validator];
-  constructor(validator) {
-    this.validator = validator
-      .ensure(this, 'blueOrRed')
+  constructor() {
+    this.validator = new Validator(this)
+      .ensure('blueOrRed')
         .format(['blue', 'red']);
   }
 }
@@ -155,10 +148,9 @@ export class Model {
 }
 
 export class Model {
-  static inject = [Validator];
-  constructor(validator) {
-    this.validator = validator
-      .ensure(this, 'password')
+  constructor() {
+    this.validator = new Validator(this)
+      .ensure('password')
         .length({ minimum: 5, maximum: 25 });
   }
 }
@@ -174,10 +166,9 @@ export class Model {
 }
 
 export class Model {
-  static inject = [Validator];
-  constructor(validator) {
-    this.validator = validator
-      .ensure(this, 'age')
+  constructor() {
+    this.validator = new Validator(this)
+      .ensure('age')
         .length({ onlyInteger: true, lessThan: 115, greaterThan: 0 });
   }
 }
@@ -194,10 +185,9 @@ export class Model {
 }
 
 export class Model {
-  static inject = [Validator];
-  constructor(validator) {
-    this.validator = validator
-      .ensure(this, 'firstName')
+  constructor() {
+    this.validator = new Validator(this)
+      .ensure('firstName')
         .required();
   }
 }
@@ -213,10 +203,9 @@ export class Model {
 }
 
 export class Model {
-  static inject = [Validator];
-  constructor(validator) {
-    this.validator = validator
-      .ensure(this, 'website')
+  constructor() {
+    this.validator = new Validator(this)
+      .ensure('website')
         .url();
   }
 }
