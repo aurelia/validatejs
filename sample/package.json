@@ -23,7 +23,7 @@
       "aurelia-templating-binding": "npm:aurelia-templating-binding@^1.0.0-beta.1.1.0",
       "aurelia-templating-resources": "npm:aurelia-templating-resources@^1.0.0-beta.1.1.0",
       "aurelia-templating-router": "npm:aurelia-templating-router@^1.0.0-beta.1.1.0",
-      "aurelia-validation": "npm:aurelia-validation@0.8.0",
+      "aurelia-validation": "npm:aurelia-validation@^0.8.1",
       "font-awesome": "npm:font-awesome@^4.4.0",
       "twbs/bootstrap": "github:twbs/bootstrap@3.3.5",
       "validate.js": "npm:validate.js@^0.9.0"
