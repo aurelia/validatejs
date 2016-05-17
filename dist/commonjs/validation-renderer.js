@@ -15,6 +15,7 @@ var ValidationRenderer = exports.ValidationRenderer = function () {
   }
 
   ValidationRenderer.prototype.renderErrors = function renderErrors(node, relevantErrors) {
+    this.unrenderErrors(node);
     if (relevantErrors.length) {
       node.parentElement.classList.add('has-error');
       relevantErrors.forEach(function (error) {
@@ -22,12 +23,10 @@ var ValidationRenderer = exports.ValidationRenderer = function () {
           var errorMessageHelper = _aureliaPal.DOM.createElement('span');
           var errorMessageNode = _aureliaPal.DOM.createTextNode(error.message);
           errorMessageHelper.appendChild(errorMessageNode);
-          errorMessageHelper.classList.add('help-block');
+          errorMessageHelper.classList.add('help-block', 'au-validation');
           node.parentElement.appendChild(errorMessageHelper);
         }
       });
-    } else {
-      this.unrenderErrors(node);
     }
   };
 
@@ -37,7 +36,7 @@ var ValidationRenderer = exports.ValidationRenderer = function () {
     var children = node.parentElement.children;
     for (var i = 0; i < children.length; i++) {
       var child = children[i];
-      if (child.classList.contains('help-block')) {
+      if (child.classList.contains('help-block') && child.classList.contains('au-validation')) {
         deleteThese.push(child);
       }
     }

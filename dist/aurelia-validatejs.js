@@ -5,6 +5,7 @@ import {metadata} from 'aurelia-metadata';
 
 export class ValidationRenderer {
   renderErrors(node, relevantErrors) {
+    this.unrenderErrors(node);
     if (relevantErrors.length) {
       node.parentElement.classList.add('has-error');
       relevantErrors.forEach(error => {
@@ -12,12 +13,10 @@ export class ValidationRenderer {
           let errorMessageHelper = DOM.createElement('span');
           let errorMessageNode = DOM.createTextNode(error.message);
           errorMessageHelper.appendChild(errorMessageNode);
-          errorMessageHelper.classList.add('help-block');
+          errorMessageHelper.classList.add('help-block', 'au-validation');
           node.parentElement.appendChild(errorMessageHelper);
         }
       });
-    } else {
-      this.unrenderErrors(node);
     }
   }
   unrenderErrors(node) {
@@ -26,7 +25,7 @@ export class ValidationRenderer {
     let children = node.parentElement.children;
     for (let i = 0; i < children.length; i++) {
       let child = children[i];
-      if (child.classList.contains('help-block')) {
+      if (child.classList.contains('help-block') && child.classList.contains('au-validation')) {
         deleteThese.push(child);
       }
     }
@@ -295,28 +294,28 @@ export class Validator {
     this.config.addRule(this.currentProperty, ValidationRule.lengthRule(configuration));
     return this;
   }
-  presence() {
-    this.config.addRule(this.currentProperty, ValidationRule.presence());
+  presence(configuration) {
+    this.config.addRule(this.currentProperty, ValidationRule.presence(configuration));
     return this;
   }
-  required() {
-    this.config.addRule(this.currentProperty, ValidationRule.presence());
+  required(configuration) {
+    this.config.addRule(this.currentProperty, ValidationRule.presence(configuration));
     return this;
   }
-  numericality() {
-    this.config.addRule(this.currentProperty, ValidationRule.numericality());
+  numericality(configuration) {
+    this.config.addRule(this.currentProperty, ValidationRule.numericality(configuration));
     return this;
   }
-  date() {
-    this.config.addRule(this.currentProperty, ValidationRule.date());
+  date(configuration) {
+    this.config.addRule(this.currentProperty, ValidationRule.date(configuration));
     return this;
   }
-  datetime() {
-    this.config.addRule(this.currentProperty, ValidationRule.datetime());
+  datetime(configuration) {
+    this.config.addRule(this.currentProperty, ValidationRule.datetime(configuration));
     return this;
   }
-  email() {
-    this.config.addRule(this.currentProperty, ValidationRule.email());
+  email(configuration) {
+    this.config.addRule(this.currentProperty, ValidationRule.email(configuration));
     return this;
   }
   equality(configuration) {
@@ -335,8 +334,8 @@ export class Validator {
     this.config.addRule(this.currentProperty, ValidationRule.exclusion(configuration));
     return this;
   }
-  url() {
-    this.config.addRule(this.currentProperty, ValidationRule.url());
+  url(configuration) {
+    this.config.addRule(this.currentProperty, ValidationRule.url(configuration));
     return this;
   }
 }

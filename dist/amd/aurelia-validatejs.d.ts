@@ -83,17 +83,17 @@ declare module 'aurelia-validatejs' {
     getProperties(): any;
     ensure(prop: any): any;
     length(configuration: any): any;
-    presence(): any;
-    required(): any;
-    numericality(): any;
-    date(): any;
-    datetime(): any;
-    email(): any;
+    presence(configuration: any): any;
+    required(configuration: any): any;
+    numericality(configuration: any): any;
+    date(configuration: any): any;
+    datetime(configuration: any): any;
+    email(configuration: any): any;
     equality(configuration: any): any;
     format(configuration: any): any;
     inclusion(configuration: any): any;
     exclusion(configuration: any): any;
-    url(): any;
+    url(configuration: any): any;
   }
   export function base(targetOrConfig: any, key: any, descriptor: any, rule: any): any;
   export function length(targetOrConfig: any, key: any, descriptor: any): any;

@@ -55,33 +55,33 @@ System.register(['./metadata-key', './validation-config', './validation-engine',
           return this;
         };
 
-        Validator.prototype.presence = function presence() {
-          this.config.addRule(this.currentProperty, ValidationRule.presence());
+        Validator.prototype.presence = function presence(configuration) {
+          this.config.addRule(this.currentProperty, ValidationRule.presence(configuration));
           return this;
         };
 
-        Validator.prototype.required = function required() {
-          this.config.addRule(this.currentProperty, ValidationRule.presence());
+        Validator.prototype.required = function required(configuration) {
+          this.config.addRule(this.currentProperty, ValidationRule.presence(configuration));
           return this;
         };
 
-        Validator.prototype.numericality = function numericality() {
-          this.config.addRule(this.currentProperty, ValidationRule.numericality());
+        Validator.prototype.numericality = function numericality(configuration) {
+          this.config.addRule(this.currentProperty, ValidationRule.numericality(configuration));
           return this;
         };
 
-        Validator.prototype.date = function date() {
-          this.config.addRule(this.currentProperty, ValidationRule.date());
+        Validator.prototype.date = function date(configuration) {
+          this.config.addRule(this.currentProperty, ValidationRule.date(configuration));
           return this;
         };
 
-        Validator.prototype.datetime = function datetime() {
-          this.config.addRule(this.currentProperty, ValidationRule.datetime());
+        Validator.prototype.datetime = function datetime(configuration) {
+          this.config.addRule(this.currentProperty, ValidationRule.datetime(configuration));
           return this;
         };
 
-        Validator.prototype.email = function email() {
-          this.config.addRule(this.currentProperty, ValidationRule.email());
+        Validator.prototype.email = function email(configuration) {
+          this.config.addRule(this.currentProperty, ValidationRule.email(configuration));
           return this;
         };
 
@@ -105,8 +105,8 @@ System.register(['./metadata-key', './validation-config', './validation-engine',
           return this;
         };
 
-        Validator.prototype.url = function url() {
-          this.config.addRule(this.currentProperty, ValidationRule.url());
+        Validator.prototype.url = function url(configuration) {
+          this.config.addRule(this.currentProperty, ValidationRule.url(configuration));
           return this;
         };
 
