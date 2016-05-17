@@ -32,28 +32,28 @@ export class Validator {
     this.config.addRule(this.currentProperty, ValidationRule.lengthRule(configuration));
     return this;
   }
-  presence() {
-    this.config.addRule(this.currentProperty, ValidationRule.presence());
+  presence(configuration) {
+    this.config.addRule(this.currentProperty, ValidationRule.presence(configuration));
     return this;
   }
-  required() {
-    this.config.addRule(this.currentProperty, ValidationRule.presence());
+  required(configuration) {
+    this.config.addRule(this.currentProperty, ValidationRule.presence(configuration));
     return this;
   }
-  numericality() {
-    this.config.addRule(this.currentProperty, ValidationRule.numericality());
+  numericality(configuration) {
+    this.config.addRule(this.currentProperty, ValidationRule.numericality(configuration));
     return this;
   }
-  date() {
-    this.config.addRule(this.currentProperty, ValidationRule.date());
+  date(configuration) {
+    this.config.addRule(this.currentProperty, ValidationRule.date(configuration));
     return this;
   }
-  datetime() {
-    this.config.addRule(this.currentProperty, ValidationRule.datetime());
+  datetime(configuration) {
+    this.config.addRule(this.currentProperty, ValidationRule.datetime(configuration));
     return this;
   }
-  email() {
-    this.config.addRule(this.currentProperty, ValidationRule.email());
+  email(configuration) {
+    this.config.addRule(this.currentProperty, ValidationRule.email(configuration));
     return this;
   }
   equality(configuration) {
@@ -72,8 +72,8 @@ export class Validator {
     this.config.addRule(this.currentProperty, ValidationRule.exclusion(configuration));
     return this;
   }
-  url() {
-    this.config.addRule(this.currentProperty, ValidationRule.url());
+  url(configuration) {
+    this.config.addRule(this.currentProperty, ValidationRule.url(configuration));
     return this;
   }
 }
