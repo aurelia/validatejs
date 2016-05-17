@@ -2,6 +2,7 @@ import {DOM} from 'aurelia-pal';
 
 export class ValidationRenderer {
   renderErrors(node, relevantErrors) {
+    this.unrenderErrors(node);
     if (relevantErrors.length) {
       node.parentElement.classList.add('has-error');
       relevantErrors.forEach(error => {
@@ -9,12 +10,10 @@ export class ValidationRenderer {
           let errorMessageHelper = DOM.createElement('span');
           let errorMessageNode = DOM.createTextNode(error.message);
           errorMessageHelper.appendChild(errorMessageNode);
-          errorMessageHelper.classList.add('help-block');
+          errorMessageHelper.classList.add('help-block', 'au-validation');
           node.parentElement.appendChild(errorMessageHelper);
         }
       });
-    } else {
-      this.unrenderErrors(node);
     }
   }
   unrenderErrors(node) {
@@ -23,7 +22,7 @@ export class ValidationRenderer {
     let children = node.parentElement.children;
     for (let i = 0; i < children.length; i++) {
       let child = children[i];
-      if (child.classList.contains('help-block')) {
+      if (child.classList.contains('help-block') && child.classList.contains('au-validation')) {
         deleteThese.push(child);
       }
     }
