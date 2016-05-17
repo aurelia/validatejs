@@ -10,7 +10,9 @@ This is a plugin that will allow using validate.js in your Aurelia application f
 
 ## Validation Rules
 
-Validation is performed using [validate.js](https://validatejs.org/).  You can visit their official site to get more information about how to use all of the validation rules.  Here are the base rules -
+Validation is performed using [validate.js](https://validatejs.org/).  You can visit their official site to get more information about how to use all of the validation rules.
+
+You can use a decorator or the fluent syntax, both are shown. Here are the base rules -
 
 ### Date
 
