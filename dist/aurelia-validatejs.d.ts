@@ -96,16 +96,16 @@ declare module 'aurelia-validatejs' {
     url(configuration: any): any;
   }
   export function base(targetOrConfig: any, key: any, descriptor: any, rule: any): any;
-  export function length(targetOrConfig: any, key: any, descriptor: any): any;
-  export function presence(targetOrConfig: any, key: any, descriptor: any): any;
-  export function required(targetOrConfig: any, key: any, descriptor: any): any;
-  export function date(targetOrConfig: any, key: any, descriptor: any): any;
-  export function datetime(targetOrConfig: any, key: any, descriptor: any): any;
-  export function email(targetOrConfig: any, key: any, descriptor: any): any;
-  export function equality(targetOrConfig: any, key: any, descriptor: any): any;
-  export function exclusion(targetOrConfig: any, key: any, descriptor: any): any;
-  export function inclusion(targetOrConfig: any, key: any, descriptor: any): any;
-  export function format(targetOrConfig: any, key: any, descriptor: any): any;
-  export function url(targetOrConfig: any, key: any, descriptor: any): any;
-  export function numericality(targetOrConfig: any, key: any, descriptor: any): any;
+  export function length(targetOrConfig: any, key?: any, descriptor?: any): any;
+  export function presence(targetOrConfig?: any, key?: any, descriptor?: any): any;
+  export function required(targetOrConfig?: any, key?: any, descriptor?: any): any;
+  export function date(targetOrConfig?: any, key?: any, descriptor?: any): any;
+  export function datetime(targetOrConfig?: any, key?: any, descriptor?: any): any;
+  export function email(targetOrConfig?: any, key?: any, descriptor?: any): any;
+  export function equality(targetOrConfig: any, key?: any, descriptor?: any): any;
+  export function exclusion(targetOrConfig: any, key?: any, descriptor?: any): any;
+  export function inclusion(targetOrConfig: any, key?: any, descriptor?: any): any;
+  export function format(targetOrConfig: any, key?: any, descriptor?: any): any;
+  export function url(targetOrConfig?: any, key?: any, descriptor?: any): any;
+  export function numericality(targetOrConfig?: any, key?: any, descriptor?: any): any;
 }
