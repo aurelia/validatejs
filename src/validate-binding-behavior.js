@@ -1,5 +1,7 @@
 import {ValidationRenderer} from './validation-renderer';
 import {inject} from 'aurelia-dependency-injection';
+import {ValidationEngine} from './validation-engine';
+import {getContextFor} from 'aurelia-binding';
 
 @inject(ValidationRenderer)
 export class ValidateBindingBehavior {
@@ -8,12 +10,11 @@ export class ValidateBindingBehavior {
   }
   bind(binding, source) {
     let targetProperty;
-    // let target;
+    let target;
     let reporter;
     targetProperty = this.getTargetProperty(binding);
-    // target = this.getPropertyContext(source, targetProperty);
-    reporter = this.getReporter(source);
-    // reporter = ValidationEngine.getValidationReporter(target);
+    target = this.getPropertyContext(source, targetProperty);
+    reporter = this.getReporter(target);
     reporter.subscribe(errors => {
       let relevantErrors = errors.filter(error => {
         return error.propertyName === targetProperty;
@@ -22,9 +23,7 @@ export class ValidateBindingBehavior {
     });
   }
   unbind(binding, source) {
-    // let targetProperty = this.getTargetProperty(source);
-    // let target = this.getPropertyContext(source, targetProperty);
-    // let reporter = this.getReporter(source);
+    // TODO: destroy yourself, gracefully
   }
   getTargetProperty(binding) {
     let targetProperty;
@@ -34,17 +33,10 @@ export class ValidateBindingBehavior {
     return targetProperty;
   }
   getPropertyContext(source, targetProperty) {
-    let target = getContextFor(source, targetProperty);
+    let target = getContextFor(targetProperty, source, 0);
     return target;
   }
-  getReporter(source) {
-    let reporter;
-    if (source.bindingContext.reporter) {
-      reporter = source.bindingContext.reporter;
-    } else {
-      let parentContext = source.overrideContext.parentOverrideContext;
-      reporter = parentContext.bindingContext.reporter;
-    }
-    return reporter;
+  getReporter(target) {
+    return ValidationEngine.getValidationReporter(target);
   }
 }
