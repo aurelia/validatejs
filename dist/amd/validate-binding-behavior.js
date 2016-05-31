@@ -1,4 +1,4 @@
-define(['exports', './validation-renderer', 'aurelia-dependency-injection'], function (exports, _validationRenderer, _aureliaDependencyInjection) {
+define(['exports', './validation-renderer', 'aurelia-dependency-injection', './validation-engine', 'aurelia-binding'], function (exports, _validationRenderer, _aureliaDependencyInjection, _validationEngine, _aureliaBinding) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -25,12 +25,11 @@ define(['exports', './validation-renderer', 'aurelia-dependency-injection'], fun
       var _this = this;
 
       var targetProperty = void 0;
-
+      var target = void 0;
       var reporter = void 0;
       targetProperty = this.getTargetProperty(binding);
-
-      reporter = this.getReporter(source);
-
+      target = this.getPropertyContext(source, targetProperty);
+      reporter = this.getReporter(target);
       reporter.subscribe(function (errors) {
         var relevantErrors = errors.filter(function (error) {
           return error.propertyName === targetProperty;
@@ -50,19 +49,12 @@ define(['exports', './validation-renderer', 'aurelia-dependency-injection'], fun
     };
 
     ValidateBindingBehavior.prototype.getPropertyContext = function getPropertyContext(source, targetProperty) {
-      var target = getContextFor(source, targetProperty);
+      var target = (0, _aureliaBinding.getContextFor)(targetProperty, source, 0);
       return target;
     };
 
-    ValidateBindingBehavior.prototype.getReporter = function getReporter(source) {
-      var reporter = void 0;
-      if (source.bindingContext.reporter) {
-        reporter = source.bindingContext.reporter;
-      } else {
-        var parentContext = source.overrideContext.parentOverrideContext;
-        reporter = parentContext.bindingContext.reporter;
-      }
-      return reporter;
+    ValidateBindingBehavior.prototype.getReporter = function getReporter(target) {
+      return _validationEngine.ValidationEngine.getValidationReporter(target);
     };
 
     return ValidateBindingBehavior;

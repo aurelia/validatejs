@@ -13,9 +13,8 @@ var _validationEngine = require('./validation-engine');
 
 var _metadataKey = require('./metadata-key');
 
-function observeProperty(target, key, descriptor, targetOrConfig, rule) {
+function observeProperty(target, key, descriptor) {
   var config = _aureliaMetadata.metadata.getOrCreateOwn(_metadataKey.validationMetadataKey, _validationConfig.ValidationConfig, target);
-  config.addRule(key, rule(targetOrConfig));
 
   var innerPropertyName = '_' + key;
 

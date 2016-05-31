@@ -1,7 +1,8 @@
 import {DOM} from 'aurelia-pal';
 import {ValidationError} from 'aurelia-validation';
-import {inject} from 'aurelia-dependency-injection';
 import {metadata} from 'aurelia-metadata';
+import {inject} from 'aurelia-dependency-injection';
+import {getContextFor} from 'aurelia-binding';
 
 export class ValidationRenderer {
   renderErrors(node, relevantErrors) {
@@ -34,36 +35,6 @@ export class ValidationRenderer {
     });
   }
 }
-
-export class ValidationConfig {
-  __validationRules__ = [];
-  addRule(key, rule) {
-    this.__validationRules__.push({ key: key, rule: rule });
-  }
-  validate(instance, reporter, key) {
-    let errors = [];
-    this.__validationRules__.forEach(rule => {
-      if (!key || key === rule.key) {
-        let result = rule.rule.validate(instance, rule.key);
-        if (result) {
-          errors.push(result);
-        }
-      }
-    });
-    reporter.publish(errors);
-    return errors;
-  }
-  getValidationRules() {
-    return this.__validationRules__ || (this.__validationRules__ = aggregateValidationRules(this));
-  }
-  aggregateValidationRules() {
-    console.error('not yet implemented');
-    //get __validationRules__ from class using metadata
-    //merge with any instance specific __validationRules__
-  }
-}
-
-export const validationMetadataKey = 'aurelia:validation';
 
 function getRandomId() {
   let rand = Math.floor(Math.random() * (99999 - 10000 + 1)) + 10000;
@@ -172,51 +143,33 @@ export function cleanResult(data) {
   return result;
 }
 
-@inject(ValidationRenderer)
-export class ValidateBindingBehavior {
-  constructor(renderer) {
-    this.renderer = renderer;
+export const validationMetadataKey = 'aurelia:validation';
+
+export class ValidationConfig {
+  __validationRules__ = [];
+  addRule(key, rule) {
+    this.__validationRules__.push({ key: key, rule: rule });
   }
-  bind(binding, source) {
-    let targetProperty;
-    // let target;
-    let reporter;
-    targetProperty = this.getTargetProperty(binding);
-    // target = this.getPropertyContext(source, targetProperty);
-    reporter = this.getReporter(source);
-    // reporter = ValidationEngine.getValidationReporter(target);
-    reporter.subscribe(errors => {
-      let relevantErrors = errors.filter(error => {
-        return error.propertyName === targetProperty;
-      });
-      this.renderer.renderErrors(binding.target, relevantErrors);
+  validate(instance, reporter, key) {
+    let errors = [];
+    this.__validationRules__.forEach(rule => {
+      if (!key || key === rule.key) {
+        let result = rule.rule.validate(instance, rule.key);
+        if (result) {
+          errors.push(result);
+        }
+      }
     });
+    reporter.publish(errors);
+    return errors;
   }
-  unbind(binding, source) {
-    // let targetProperty = this.getTargetProperty(source);
-    // let target = this.getPropertyContext(source, targetProperty);
-    // let reporter = this.getReporter(source);
+  getValidationRules() {
+    return this.__validationRules__ || (this.__validationRules__ = aggregateValidationRules(this));
   }
-  getTargetProperty(binding) {
-    let targetProperty;
-    if (binding.sourceExpression && binding.sourceExpression.expression && binding.sourceExpression.expression.name) {
-      targetProperty = binding.sourceExpression.expression.name;
-    }
-    return targetProperty;
-  }
-  getPropertyContext(source, targetProperty) {
-    let target = getContextFor(source, targetProperty);
-    return target;
-  }
-  getReporter(source) {
-    let reporter;
-    if (source.bindingContext.reporter) {
-      reporter = source.bindingContext.reporter;
-    } else {
-      let parentContext = source.overrideContext.parentOverrideContext;
-      reporter = parentContext.bindingContext.reporter;
-    }
-    return reporter;
+  aggregateValidationRules() {
+    console.error('not yet implemented');
+    //get __validationRules__ from class using metadata
+    //merge with any instance specific __validationRules__
   }
 }
 
@@ -226,9 +179,8 @@ export class ValidationEngine {
   }
 }
 
-export function observeProperty(target, key, descriptor, targetOrConfig, rule) {
+export function observeProperty(target, key, descriptor) {
   let config = metadata.getOrCreateOwn(validationMetadataKey, ValidationConfig, target);
-  config.addRule(key, rule(targetOrConfig));
 
   // TODO: REMOVE
   let innerPropertyName = `_${key}`;
@@ -263,6 +215,44 @@ export function observeProperty(target, key, descriptor, targetOrConfig, rule) {
 
   if (!babel) {
     Reflect.defineProperty(target, key, descriptor);
+  }
+}
+
+@inject(ValidationRenderer)
+export class ValidateBindingBehavior {
+  constructor(renderer) {
+    this.renderer = renderer;
+  }
+  bind(binding, source) {
+    let targetProperty;
+    let target;
+    let reporter;
+    targetProperty = this.getTargetProperty(binding);
+    target = this.getPropertyContext(source, targetProperty);
+    reporter = this.getReporter(target);
+    reporter.subscribe(errors => {
+      let relevantErrors = errors.filter(error => {
+        return error.propertyName === targetProperty;
+      });
+      this.renderer.renderErrors(binding.target, relevantErrors);
+    });
+  }
+  unbind(binding, source) {
+    // TODO: destroy yourself, gracefully
+  }
+  getTargetProperty(binding) {
+    let targetProperty;
+    if (binding.sourceExpression && binding.sourceExpression.expression && binding.sourceExpression.expression.name) {
+      targetProperty = binding.sourceExpression.expression.name;
+    }
+    return targetProperty;
+  }
+  getPropertyContext(source, targetProperty) {
+    let target = getContextFor(targetProperty, source, 0);
+    return target;
+  }
+  getReporter(target) {
+    return ValidationEngine.getValidationReporter(target);
   }
 }
 
@@ -344,11 +334,17 @@ export function base(targetOrConfig, key, descriptor, rule) {
   if (key) {
     let target = targetOrConfig;
     targetOrConfig = null;
-    return observeProperty(target, key, descriptor, targetOrConfig, rule);
+    return addRule(target, key, descriptor, targetOrConfig, rule);
   }
   return function(t, k, d) {
-    return observeProperty(t, k, d, targetOrConfig, rule);
+    return addRule(t, k, d, targetOrConfig, rule);
   };
+}
+
+export function addRule(target, key, descriptor, targetOrConfig, rule) {
+  let config = metadata.getOrCreateOwn(validationMetadataKey, ValidationConfig, target);
+  config.addRule(key, rule(targetOrConfig));
+  return observeProperty(target, key, descriptor, targetOrConfig, rule);
 }
 
 export function length(targetOrConfig, key, descriptor) {

@@ -6,27 +6,19 @@ declare module 'aurelia-validatejs' {
     ValidationError
   } from 'aurelia-validation';
   import {
+    metadata
+  } from 'aurelia-metadata';
+  import {
     inject
   } from 'aurelia-dependency-injection';
   import {
-    metadata
-  } from 'aurelia-metadata';
+    getContextFor
+  } from 'aurelia-binding';
   import validate from 'validate.js';
   export class ValidationRenderer {
     renderErrors(node: any, relevantErrors: any): any;
     unrenderErrors(node: any): any;
   }
-  export class ValidationConfig {
-    __validationRules__: any;
-    addRule(key: any, rule: any): any;
-    validate(instance: any, reporter: any, key: any): any;
-    getValidationRules(): any;
-    aggregateValidationRules(): any;
-  }
-  
-  //get __validationRules__ from class using metadata
-  //merge with any instance specific __validationRules__
-  export const validationMetadataKey: any;
   export class ValidationObserver {
     id: any;
     callback: any;
@@ -59,22 +51,31 @@ declare module 'aurelia-validatejs' {
     static url(config?: any): any;
   }
   export function cleanResult(data: any): any;
+  export const validationMetadataKey: any;
+  export class ValidationConfig {
+    __validationRules__: any;
+    addRule(key: any, rule: any): any;
+    validate(instance: any, reporter: any, key: any): any;
+    getValidationRules(): any;
+    aggregateValidationRules(): any;
+  }
+  
+  //get __validationRules__ from class using metadata
+  //merge with any instance specific __validationRules__
+  export class ValidationEngine {
+    static getValidationReporter(instance: any): any;
+  }
+  export function observeProperty(target: any, key: any, descriptor: any): any;
   export class ValidateBindingBehavior {
     constructor(renderer: any);
     bind(binding: any, source: any): any;
     unbind(binding: any, source: any): any;
     
-    // let targetProperty = this.getTargetProperty(source);
-    // let target = this.getPropertyContext(source, targetProperty);
-    // let reporter = this.getReporter(source);
+    // TODO: destroy yourself, gracefully
     getTargetProperty(binding: any): any;
     getPropertyContext(source: any, targetProperty: any): any;
-    getReporter(source: any): any;
+    getReporter(target: any): any;
   }
-  export class ValidationEngine {
-    static getValidationReporter(instance: any): any;
-  }
-  export function observeProperty(target: any, key: any, descriptor: any, targetOrConfig: any, rule: any): any;
   export class Validator {
     object: any;
     config: any;
@@ -96,6 +97,7 @@ declare module 'aurelia-validatejs' {
     url(configuration: any): any;
   }
   export function base(targetOrConfig: any, key: any, descriptor: any, rule: any): any;
+  export function addRule(target: any, key: any, descriptor: any, targetOrConfig: any, rule: any): any;
   export function length(targetOrConfig: any, key: any, descriptor: any): any;
   export function presence(targetOrConfig: any, key: any, descriptor: any): any;
   export function required(targetOrConfig: any, key: any, descriptor: any): any;

@@ -3,9 +3,8 @@ import { ValidationConfig } from './validation-config';
 import { ValidationEngine } from './validation-engine';
 import { validationMetadataKey } from './metadata-key';
 
-export function observeProperty(target, key, descriptor, targetOrConfig, rule) {
+export function observeProperty(target, key, descriptor) {
   let config = metadata.getOrCreateOwn(validationMetadataKey, ValidationConfig, target);
-  config.addRule(key, rule(targetOrConfig));
 
   let innerPropertyName = `_${ key }`;
 

@@ -2,6 +2,8 @@ var _dec, _class;
 
 import { ValidationRenderer } from './validation-renderer';
 import { inject } from 'aurelia-dependency-injection';
+import { ValidationEngine } from './validation-engine';
+import { getContextFor } from 'aurelia-binding';
 
 export let ValidateBindingBehavior = (_dec = inject(ValidationRenderer), _dec(_class = class ValidateBindingBehavior {
   constructor(renderer) {
@@ -9,12 +11,11 @@ export let ValidateBindingBehavior = (_dec = inject(ValidationRenderer), _dec(_c
   }
   bind(binding, source) {
     let targetProperty;
-
+    let target;
     let reporter;
     targetProperty = this.getTargetProperty(binding);
-
-    reporter = this.getReporter(source);
-
+    target = this.getPropertyContext(source, targetProperty);
+    reporter = this.getReporter(target);
     reporter.subscribe(errors => {
       let relevantErrors = errors.filter(error => {
         return error.propertyName === targetProperty;
@@ -31,17 +32,10 @@ export let ValidateBindingBehavior = (_dec = inject(ValidationRenderer), _dec(_c
     return targetProperty;
   }
   getPropertyContext(source, targetProperty) {
-    let target = getContextFor(source, targetProperty);
+    let target = getContextFor(targetProperty, source, 0);
     return target;
   }
-  getReporter(source) {
-    let reporter;
-    if (source.bindingContext.reporter) {
-      reporter = source.bindingContext.reporter;
-    } else {
-      let parentContext = source.overrideContext.parentOverrideContext;
-      reporter = parentContext.bindingContext.reporter;
-    }
-    return reporter;
+  getReporter(target) {
+    return ValidationEngine.getValidationReporter(target);
   }
 }) || _class);
