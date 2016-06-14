@@ -1,53 +1,82 @@
-import {metadata} from 'aurelia-metadata';
-import {ValidationError,Validator as ValidatorInterface} from 'aurelia-validation';
 
-export const metadataKey = 'aurelia-validatejs:rules';
 
-export class ValidationRule {
-  name = '';
-  config;
-  constructor(name, config) {
+import { metadata } from 'aurelia-metadata';
+import { ValidationError, Validator as ValidatorInterface } from 'aurelia-validation';
+
+export var metadataKey = 'aurelia-validatejs:rules';
+
+export var ValidationRule = function () {
+  function ValidationRule(name, config) {
+    
+
+    this.name = '';
+
     this.name = name;
     this.config = config;
   }
-  static date(config = true) {
+
+  ValidationRule.date = function date() {
+    var config = arguments.length <= 0 || arguments[0] === undefined ? true : arguments[0];
+
     return new ValidationRule('date', config);
-  }
-  static datetime(config = true) {
+  };
+
+  ValidationRule.datetime = function datetime() {
+    var config = arguments.length <= 0 || arguments[0] === undefined ? true : arguments[0];
+
     return new ValidationRule('datetime', config);
-  }
-  static email(config = true) {
+  };
+
+  ValidationRule.email = function email() {
+    var config = arguments.length <= 0 || arguments[0] === undefined ? true : arguments[0];
+
     return new ValidationRule('email', config);
-  }
-  static equality(config) {
+  };
+
+  ValidationRule.equality = function equality(config) {
     return new ValidationRule('equality', config);
-  }
-  static exclusion(config) {
+  };
+
+  ValidationRule.exclusion = function exclusion(config) {
     return new ValidationRule('exclusion', config);
-  }
-  static format(config) {
+  };
+
+  ValidationRule.format = function format(config) {
     return new ValidationRule('format', config);
-  }
-  static inclusion(config) {
+  };
+
+  ValidationRule.inclusion = function inclusion(config) {
     return new ValidationRule('inclusion', config);
-  }
-  static lengthRule(config) {
+  };
+
+  ValidationRule.lengthRule = function lengthRule(config) {
     return new ValidationRule('length', config);
-  }
-  static numericality(config = true) {
+  };
+
+  ValidationRule.numericality = function numericality() {
+    var config = arguments.length <= 0 || arguments[0] === undefined ? true : arguments[0];
+
     return new ValidationRule('numericality', config);
-  }
-  static presence(config = true) {
+  };
+
+  ValidationRule.presence = function presence() {
+    var config = arguments.length <= 0 || arguments[0] === undefined ? true : arguments[0];
+
     return new ValidationRule('presence', config);
-  }
-  static url(config = true) {
+  };
+
+  ValidationRule.url = function url() {
+    var config = arguments.length <= 0 || arguments[0] === undefined ? true : arguments[0];
+
     return new ValidationRule('url', config);
-  }
-}
+  };
+
+  return ValidationRule;
+}();
 
 export function cleanResult(data) {
-  let result = {};
-  for (let prop in data) {
+  var result = {};
+  for (var prop in data) {
     if (data.hasOwnProperty(prop)) {
       result = {
         propertyName: prop,
@@ -58,104 +87,120 @@ export function cleanResult(data) {
   return result;
 }
 
-export class ValidationRules {
-  rules = [];
+export var ValidationRules = function () {
+  function ValidationRules() {
+    
 
-  static ensure(prop) {
-    const rules = new ValidationRules();
-    return rules.ensure(prop);
+    this.rules = [];
   }
 
-  on(target) {
+  ValidationRules.ensure = function ensure(prop) {
+    var rules = new ValidationRules();
+    return rules.ensure(prop);
+  };
+
+  ValidationRules.prototype.on = function on(target) {
     if (target instanceof Function) {
       target = target.prototype;
     }
     metadata.define(metadataKey, this, target);
     return this;
-  }
+  };
 
-  decorate() {
+  ValidationRules.prototype.decorate = function decorate() {
     throw new Error('not implemented');
-  }
+  };
 
-  addRule(key, rule) {
+  ValidationRules.prototype.addRule = function addRule(key, rule) {
     this.rules.push({ key: key, rule: rule });
-  }
-  ensure(prop) {
+  };
+
+  ValidationRules.prototype.ensure = function ensure(prop) {
     this.currentProperty = prop;
     return this;
-  }
-  length(configuration) {
+  };
+
+  ValidationRules.prototype.length = function length(configuration) {
     this.addRule(this.currentProperty, ValidationRule.lengthRule(configuration));
     return this;
-  }
-  presence(configuration) {
+  };
+
+  ValidationRules.prototype.presence = function presence(configuration) {
     this.addRule(this.currentProperty, ValidationRule.presence(configuration));
     return this;
-  }
-  required(configuration) {
+  };
+
+  ValidationRules.prototype.required = function required(configuration) {
     this.addRule(this.currentProperty, ValidationRule.presence(configuration));
     return this;
-  }
-  numericality(configuration) {
+  };
+
+  ValidationRules.prototype.numericality = function numericality(configuration) {
     this.addRule(this.currentProperty, ValidationRule.numericality(configuration));
     return this;
-  }
-  date(configuration) {
+  };
+
+  ValidationRules.prototype.date = function date(configuration) {
     this.addRule(this.currentProperty, ValidationRule.date(configuration));
     return this;
-  }
-  datetime(configuration) {
+  };
+
+  ValidationRules.prototype.datetime = function datetime(configuration) {
     this.addRule(this.currentProperty, ValidationRule.datetime(configuration));
     return this;
-  }
-  email(configuration) {
+  };
+
+  ValidationRules.prototype.email = function email(configuration) {
     this.addRule(this.currentProperty, ValidationRule.email(configuration));
     return this;
-  }
-  equality(configuration) {
+  };
+
+  ValidationRules.prototype.equality = function equality(configuration) {
     this.addRule(this.currentProperty, ValidationRule.equality(configuration));
     return this;
-  }
-  format(configuration) {
+  };
+
+  ValidationRules.prototype.format = function format(configuration) {
     this.addRule(this.currentProperty, ValidationRule.format(configuration));
     return this;
-  }
-  inclusion(configuration) {
+  };
+
+  ValidationRules.prototype.inclusion = function inclusion(configuration) {
     this.addRule(this.currentProperty, ValidationRule.inclusion(configuration));
     return this;
-  }
-  exclusion(configuration) {
+  };
+
+  ValidationRules.prototype.exclusion = function exclusion(configuration) {
     this.addRule(this.currentProperty, ValidationRule.exclusion(configuration));
     return this;
-  }
-  url(configuration) {
+  };
+
+  ValidationRules.prototype.url = function url(configuration) {
     this.addRule(this.currentProperty, ValidationRule.url(configuration));
     return this;
-  }
-}
+  };
+
+  return ValidationRules;
+}();
 
 export function base(targetOrConfig, key, descriptor, rule) {
   if (key) {
-    let target = targetOrConfig;
+    var target = targetOrConfig;
     targetOrConfig = null;
     return addRule(target, key, descriptor, targetOrConfig, rule);
   }
-  return function(t, k, d) {
+  return function (t, k, d) {
     return addRule(t, k, d, targetOrConfig, rule);
   };
 }
 
 export function addRule(target, key, descriptor, targetOrConfig, rule) {
-  let rules = metadata.getOrCreateOwn(metadataKey, ValidationRules, target);
+  var rules = metadata.getOrCreateOwn(metadataKey, ValidationRules, target);
   if (targetOrConfig === null || targetOrConfig === undefined) {
     targetOrConfig = true;
   }
   rules.addRule(key, rule(targetOrConfig));
 
-  // babel's decorator logic uses !!descriptor.configurable which creates read-only
-  // properties that can't be observed with the SetterObserver.  Make sure the
-  // property remains configurable.
   descriptor.configurable = true;
 }
 
@@ -209,40 +254,57 @@ export function numericality(targetOrConfig, key, descriptor) {
 
 import validate from 'validate.js';
 
-export class Validator {
-  _validate(object, propertyName = null, rules = null) {
-    const errors = [];
+export var Validator = function () {
+  function Validator() {
+    
+  }
+
+  Validator.prototype._validate = function _validate(object) {
+    var propertyName = arguments.length <= 1 || arguments[1] === undefined ? null : arguments[1];
+    var rules = arguments.length <= 2 || arguments[2] === undefined ? null : arguments[2];
+
+    var errors = [];
     if (!rules) {
       rules = metadata.get(metadataKey, object);
     }
     if (!rules) {
-      // no rules defined for propertyName.
       return errors;
     }
     rules = rules.rules;
-    for (let i = 0, ii = rules.length; i < ii; i++) {
-      const ruleInfo = rules[i];
+    for (var i = 0, ii = rules.length; i < ii; i++) {
+      var _propertyName, _validator;
+
+      var ruleInfo = rules[i];
       if (propertyName !== null && ruleInfo.key !== propertyName) {
         continue;
       }
-      const { name, config } = ruleInfo.rule;
-      const validator = { [propertyName]: { [name]: config } };
-      const result = validate(object, validator);
+      var _ruleInfo$rule = ruleInfo.rule;
+      var name = _ruleInfo$rule.name;
+      var config = _ruleInfo$rule.config;
+
+      var validator = (_validator = {}, _validator[propertyName] = (_propertyName = {}, _propertyName[name] = config, _propertyName), _validator);
+      var result = validate(object, validator);
       if (result) {
         errors.push(new ValidationError(ruleInfo.rule, result[propertyName][0], object, propertyName));
       }
     }
     return errors;
-  }
+  };
 
-  validateProperty(object, propertyName, rules = null) {
+  Validator.prototype.validateProperty = function validateProperty(object, propertyName) {
+    var rules = arguments.length <= 2 || arguments[2] === undefined ? null : arguments[2];
+
     return this._validate(object, propertyName, rules);
-  }
+  };
 
-  validateObject(object, rules = null) {
+  Validator.prototype.validateObject = function validateObject(object) {
+    var rules = arguments.length <= 1 || arguments[1] === undefined ? null : arguments[1];
+
     return this._validate(object, null, rules);
-  }
-}
+  };
+
+  return Validator;
+}();
 
 export function configure(config) {
   config.container.registerInstance(ValidatorInterface, new Validator());

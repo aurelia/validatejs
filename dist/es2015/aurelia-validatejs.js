@@ -1,12 +1,12 @@
-import {metadata} from 'aurelia-metadata';
-import {ValidationError,Validator as ValidatorInterface} from 'aurelia-validation';
+import { metadata } from 'aurelia-metadata';
+import { ValidationError, Validator as ValidatorInterface } from 'aurelia-validation';
 
 export const metadataKey = 'aurelia-validatejs:rules';
 
-export class ValidationRule {
-  name = '';
-  config;
+export let ValidationRule = class ValidationRule {
   constructor(name, config) {
+    this.name = '';
+
     this.name = name;
     this.config = config;
   }
@@ -43,7 +43,7 @@ export class ValidationRule {
   static url(config = true) {
     return new ValidationRule('url', config);
   }
-}
+};
 
 export function cleanResult(data) {
   let result = {};
@@ -58,8 +58,10 @@ export function cleanResult(data) {
   return result;
 }
 
-export class ValidationRules {
-  rules = [];
+export let ValidationRules = class ValidationRules {
+  constructor() {
+    this.rules = [];
+  }
 
   static ensure(prop) {
     const rules = new ValidationRules();
@@ -133,7 +135,7 @@ export class ValidationRules {
     this.addRule(this.currentProperty, ValidationRule.url(configuration));
     return this;
   }
-}
+};
 
 export function base(targetOrConfig, key, descriptor, rule) {
   if (key) {
@@ -141,7 +143,7 @@ export function base(targetOrConfig, key, descriptor, rule) {
     targetOrConfig = null;
     return addRule(target, key, descriptor, targetOrConfig, rule);
   }
-  return function(t, k, d) {
+  return function (t, k, d) {
     return addRule(t, k, d, targetOrConfig, rule);
   };
 }
@@ -153,9 +155,6 @@ export function addRule(target, key, descriptor, targetOrConfig, rule) {
   }
   rules.addRule(key, rule(targetOrConfig));
 
-  // babel's decorator logic uses !!descriptor.configurable which creates read-only
-  // properties that can't be observed with the SetterObserver.  Make sure the
-  // property remains configurable.
   descriptor.configurable = true;
 }
 
@@ -209,14 +208,13 @@ export function numericality(targetOrConfig, key, descriptor) {
 
 import validate from 'validate.js';
 
-export class Validator {
+export let Validator = class Validator {
   _validate(object, propertyName = null, rules = null) {
     const errors = [];
     if (!rules) {
       rules = metadata.get(metadataKey, object);
     }
     if (!rules) {
-      // no rules defined for propertyName.
       return errors;
     }
     rules = rules.rules;
@@ -242,7 +240,7 @@ export class Validator {
   validateObject(object, rules = null) {
     return this._validate(object, null, rules);
   }
-}
+};
 
 export function configure(config) {
   config.container.registerInstance(ValidatorInterface, new Validator());
