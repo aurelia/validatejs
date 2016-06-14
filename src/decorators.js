@@ -6,11 +6,11 @@ export function length(targetOrConfig, key, descriptor) {
 }
 
 export function presence(targetOrConfig, key, descriptor) {
-  return base(targetOrConfig, key, descriptor, ValidationRule.presence);
+  return base(targetOrConfig, key, descriptor, ValidationRule.presence, true);
 }
 
 export function required(targetOrConfig, key, descriptor) {
-  return base(targetOrConfig, key, descriptor, ValidationRule.presence);
+  return base(targetOrConfig, key, descriptor, ValidationRule.presence, true);
 }
 
 export function date(targetOrConfig, key, descriptor) {

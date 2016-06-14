@@ -1,1 +1,1 @@
-export const validationMetadataKey = 'aurelia:validation';
+export const metadataKey = 'aurelia-validatejs:rules';

@@ -7,8 +7,3 @@ gulp.task('clean', function() {
   return gulp.src([paths.output])
     .pipe(vinylPaths(del));
 });
-
-gulp.task('clean-temp', function() {
-  return gulp.src([paths.output + '/temp'])
-    .pipe(vinylPaths(del));
-});

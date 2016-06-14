@@ -1,7 +1,6 @@
-import {observeProperty} from './property-observer';
 import {metadata} from 'aurelia-metadata';
-import {ValidationConfig} from './validation-config';
-import {validationMetadataKey} from './metadata-key';
+import {ValidationRules} from './validation-rules';
+import {metadataKey} from './metadata-key';
 
 export function base(targetOrConfig, key, descriptor, rule) {
   if (key) {
@@ -15,7 +14,14 @@ export function base(targetOrConfig, key, descriptor, rule) {
 }
 
 export function addRule(target, key, descriptor, targetOrConfig, rule) {
-  let config = metadata.getOrCreateOwn(validationMetadataKey, ValidationConfig, target);
-  config.addRule(key, rule(targetOrConfig));
-  return observeProperty(target, key, descriptor, targetOrConfig, rule);
+  let rules = metadata.getOrCreateOwn(metadataKey, ValidationRules, target);
+  if (targetOrConfig === null || targetOrConfig === undefined) {
+    targetOrConfig = true;
+  }
+  rules.addRule(key, rule(targetOrConfig));
+
+  // babel's decorator logic uses !!descriptor.configurable which creates read-only
+  // properties that can't be observed with the SetterObserver.  Make sure the
+  // property remains configurable.
+  descriptor.configurable = true;
 }
