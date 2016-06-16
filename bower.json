@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "aurelia-metadata": "^1.0.0-beta.2.0.0",
-    "aurelia-validation": "^0.9.0",
+    "aurelia-validation": "^0.9.1",
     "validate.js": "^0.10.0"
   }
 }

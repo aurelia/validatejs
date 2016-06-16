@@ -29,12 +29,12 @@
     },
     "peerDependencies": {
       "aurelia-metadata": "^1.0.0-beta.2.0.0",
-      "aurelia-validation": "^0.9.0",
+      "aurelia-validation": "^0.9.1",
       "validate.js": "^0.10.0"
     },
     "dependencies": {
       "aurelia-metadata": "^1.0.0-beta.2.0.0",
-      "aurelia-validation": "^0.9.0",
+      "aurelia-validation": "^0.9.1",
       "validate.js": "^0.10.0"
     },
     "devDependencies": {
@@ -46,7 +46,7 @@
   },
   "dependencies": {
     "aurelia-metadata": "^1.0.0-beta.2.0.0",
-    "aurelia-validation": "^0.9.0",
+    "aurelia-validation": "^0.9.1",
     "validate.js": "^0.10.0"
   },
   "devDependencies": {
@@ -92,8 +92,8 @@
     "require-dir": "^0.3.0",
     "run-sequence": "^1.2.1",
     "through2": "^2.0.1",
-    "typedoc": "^0.4.2",
-    "typescript": "^1.9.0-dev.20160614-1.0",
+    "typedoc": "^0.4.3",
+    "typescript": "^1.9.0-dev.20160615-1.0",
     "vinyl": "^1.1.1",
     "vinyl-paths": "^2.1.0",
     "yargs": "^4.7.1"
