@@ -230,7 +230,9 @@ define(['exports', 'aurelia-metadata', 'aurelia-validation', 'validate.js'], fun
     }
     rules.addRule(key, rule(targetOrConfig));
 
-    descriptor.configurable = true;
+    if (descriptor) {
+      descriptor.configurable = true;
+    }
   }
 
   function length(targetOrConfig, key, descriptor) {

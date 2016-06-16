@@ -155,7 +155,9 @@ export function addRule(target, key, descriptor, targetOrConfig, rule) {
   }
   rules.addRule(key, rule(targetOrConfig));
 
-  descriptor.configurable = true;
+  if (descriptor) {
+    descriptor.configurable = true;
+  }
 }
 
 export function length(targetOrConfig, key, descriptor) {

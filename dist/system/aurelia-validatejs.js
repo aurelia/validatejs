@@ -225,7 +225,9 @@ System.register(['aurelia-metadata', 'aurelia-validation', 'validate.js'], funct
         }
         rules.addRule(key, rule(targetOrConfig));
 
-        descriptor.configurable = true;
+        if (descriptor) {
+          descriptor.configurable = true;
+        }
       }
 
       _export('addRule', addRule);

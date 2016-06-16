@@ -156,7 +156,9 @@ export function addRule(target, key, descriptor, targetOrConfig, rule) {
   // babel's decorator logic uses !!descriptor.configurable which creates read-only
   // properties that can't be observed with the SetterObserver.  Make sure the
   // property remains configurable.
-  descriptor.configurable = true;
+  if (descriptor) {
+    descriptor.configurable = true;
+  }
 }
 
 export function length(targetOrConfig, key, descriptor) {
