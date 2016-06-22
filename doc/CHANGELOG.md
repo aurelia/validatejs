@@ -1,3 +1,8 @@
+<a name="0.6.0"></a>
+# [0.6.0](https://github.com/aurelia/validatejs/compare/0.5.2...v0.6.0) (2016-06-22)
+
+
+
 ### 0.2.1 (2016-05-05)
 
 
