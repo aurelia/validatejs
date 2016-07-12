@@ -9,7 +9,7 @@ System.config({
     "aurelia-binding": "npm:aurelia-binding@1.0.0-beta.1.3.6",
     "aurelia-dependency-injection": "npm:aurelia-dependency-injection@1.0.0-beta.1.2.3",
     "aurelia-metadata": "npm:aurelia-metadata@1.0.0-rc.1.0.0",
-    "aurelia-pal": "npm:aurelia-pal@1.0.0-beta.1.3.0",
+    "aurelia-pal": "npm:aurelia-pal@1.0.0-rc.1.0.0",
     "aurelia-pal-browser": "npm:aurelia-pal-browser@1.0.0-rc.1.0.0",
     "aurelia-polyfills": "npm:aurelia-polyfills@1.0.0-beta.1.1.3",
     "aurelia-validation": "npm:aurelia-validation@0.10.0",
@@ -46,7 +46,7 @@ System.config({
     "npm:aurelia-binding@1.0.0-beta.1.3.6": {
       "aurelia-logging": "npm:aurelia-logging@1.0.0-beta.2.0.0",
       "aurelia-metadata": "npm:aurelia-metadata@1.0.0-beta.2.0.0",
-      "aurelia-pal": "npm:aurelia-pal@1.0.0-beta.1.3.0",
+      "aurelia-pal": "npm:aurelia-pal@1.0.0-rc.1.0.0",
       "aurelia-task-queue": "npm:aurelia-task-queue@1.0.0-beta.2.0.0"
     },
     "npm:aurelia-binding@1.0.0-rc.1.0.0": {
@@ -58,7 +58,7 @@ System.config({
     "npm:aurelia-dependency-injection@1.0.0-beta.1.2.3": {
       "aurelia-logging": "npm:aurelia-logging@1.0.0-beta.2.0.0",
       "aurelia-metadata": "npm:aurelia-metadata@1.0.0-beta.2.0.0",
-      "aurelia-pal": "npm:aurelia-pal@1.0.0-beta.1.3.0"
+      "aurelia-pal": "npm:aurelia-pal@1.0.0-rc.1.0.0"
     },
     "npm:aurelia-dependency-injection@1.0.0-rc.1.0.0": {
       "aurelia-metadata": "npm:aurelia-metadata@1.0.0-rc.1.0.0",
@@ -69,7 +69,7 @@ System.config({
       "aurelia-path": "npm:aurelia-path@1.0.0-rc.1.0.0"
     },
     "npm:aurelia-metadata@1.0.0-beta.2.0.0": {
-      "aurelia-pal": "npm:aurelia-pal@1.0.0-beta.1.3.0"
+      "aurelia-pal": "npm:aurelia-pal@1.0.0-rc.1.0.0"
     },
     "npm:aurelia-metadata@1.0.0-rc.1.0.0": {
       "aurelia-pal": "npm:aurelia-pal@1.0.0-rc.1.0.0"
@@ -78,10 +78,10 @@ System.config({
       "aurelia-pal": "npm:aurelia-pal@1.0.0-rc.1.0.0"
     },
     "npm:aurelia-polyfills@1.0.0-beta.1.1.3": {
-      "aurelia-pal": "npm:aurelia-pal@1.0.0-beta.1.3.0"
+      "aurelia-pal": "npm:aurelia-pal@1.0.0-rc.1.0.0"
     },
     "npm:aurelia-task-queue@1.0.0-beta.2.0.0": {
-      "aurelia-pal": "npm:aurelia-pal@1.0.0-beta.1.3.0"
+      "aurelia-pal": "npm:aurelia-pal@1.0.0-rc.1.0.0"
     },
     "npm:aurelia-task-queue@1.0.0-rc.1.0.0": {
       "aurelia-pal": "npm:aurelia-pal@1.0.0-rc.1.0.0"
