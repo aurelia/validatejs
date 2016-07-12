@@ -27,7 +27,7 @@ You can use a decorator or the fluent syntax, both are shown. Here are the base 
 
 ### Date
 
-Ensure it is a date
+[Ensure it is a date](https://validatejs.org/#validators-date)
 
 ```es6
 export class Model {
@@ -45,7 +45,7 @@ export class Model {
 
 ### Datetime
 
-Ensure it is a datetime
+[Ensure it is a datetime](https://validatejs.org/#validators-datetime)
 
 ```es6
 export class Model {
@@ -63,7 +63,7 @@ export class Model {
 
 ### Email
 
-Ensure it is a valid e-mail format
+[Ensure it is a valid e-mail format](https://validatejs.org/#validators-email)
 
 ```es6
 export class Model {
@@ -81,7 +81,7 @@ export class Model {
 
 ### Equality
 
-Ensure it matches another property on the same object
+[Ensure it matches another property on the same object](https://validatejs.org/#validators-equality)
 
 ```es6
 export class Model {
@@ -99,7 +99,7 @@ export class Model {
 
 ### Exclusion
 
-Disallow a set of values
+[Disallow a set of values](https://validatejs.org/#validators-exclusion)
 
 ```es6
 export class Model {
@@ -117,7 +117,7 @@ export class Model {
 
 ### Format
 
-Ensure it matches a regex
+[Ensure it matches a regex](https://validatejs.org/#validators-format)
 
 ```es6
 export class Model {
@@ -135,7 +135,7 @@ export class Model {
 
 ### Inclusion
 
-Ensure it is included a set of values
+[Ensure it is included a set of values](https://validatejs.org/#validators-inclusion)
 
 ```es6
 export class Model {
@@ -153,7 +153,7 @@ export class Model {
 
 ### Length
 
-Ensure it is a certain length
+[Ensure it is a certain length](https://validatejs.org/#validators-length)
 
 ```es6
 export class Model {
@@ -171,7 +171,7 @@ export class Model {
 
 ### Numericality
 
-Ensure it is a number (additional validation available, check validate.js documentation for more options)
+[Ensure it is a number (additional validation available, check validate.js documentation for more options)](https://validatejs.org/#validators-numericality)
 
 ```es6
 export class Model {
@@ -189,7 +189,7 @@ export class Model {
 
 ### Presence / Required
 
-Ensure it is set
+[Ensure it is set](https://validatejs.org/#validators-presence)
 
 ```es6
 export class Model {
@@ -208,7 +208,7 @@ export class Model {
 
 ### URL
 
-Ensure it is a valid URL
+[Ensure it is a valid URL](https://validatejs.org/#validators-url)
 
 ```es6
 export class Model {
