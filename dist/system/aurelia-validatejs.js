@@ -7,6 +7,126 @@ System.register(['aurelia-metadata', 'aurelia-validation', 'validate.js'], funct
 
   
 
+  function cleanResult(data) {
+    var result = {};
+    for (var prop in data) {
+      if (data.hasOwnProperty(prop)) {
+        result = {
+          propertyName: prop,
+          message: data[prop][0]
+        };
+      }
+    }
+    return result;
+  }
+
+  _export('cleanResult', cleanResult);
+
+  function base(targetOrConfig, key, descriptor, rule) {
+    if (key) {
+      var target = targetOrConfig;
+      targetOrConfig = null;
+      return addRule(target, key, descriptor, targetOrConfig, rule);
+    }
+    return function (t, k, d) {
+      return addRule(t, k, d, targetOrConfig, rule);
+    };
+  }
+
+  _export('base', base);
+
+  function addRule(target, key, descriptor, targetOrConfig, rule) {
+    var rules = metadata.getOrCreateOwn(metadataKey, ValidationRules, target);
+    if (targetOrConfig === null || targetOrConfig === undefined) {
+      targetOrConfig = true;
+    }
+    rules.addRule(key, rule(targetOrConfig));
+
+    if (descriptor) {
+      descriptor.configurable = true;
+    }
+  }
+
+  _export('addRule', addRule);
+
+  function length(targetOrConfig, key, descriptor) {
+    return base(targetOrConfig, key, descriptor, ValidationRule.lengthRule);
+  }
+
+  _export('length', length);
+
+  function presence(targetOrConfig, key, descriptor) {
+    return base(targetOrConfig, key, descriptor, ValidationRule.presence, true);
+  }
+
+  _export('presence', presence);
+
+  function required(targetOrConfig, key, descriptor) {
+    return base(targetOrConfig, key, descriptor, ValidationRule.presence, true);
+  }
+
+  _export('required', required);
+
+  function date(targetOrConfig, key, descriptor) {
+    return base(targetOrConfig, key, descriptor, ValidationRule.date);
+  }
+
+  _export('date', date);
+
+  function datetime(targetOrConfig, key, descriptor) {
+    return base(targetOrConfig, key, descriptor, ValidationRule.datetime);
+  }
+
+  _export('datetime', datetime);
+
+  function email(targetOrConfig, key, descriptor) {
+    return base(targetOrConfig, key, descriptor, ValidationRule.email);
+  }
+
+  _export('email', email);
+
+  function equality(targetOrConfig, key, descriptor) {
+    return base(targetOrConfig, key, descriptor, ValidationRule.equality);
+  }
+
+  _export('equality', equality);
+
+  function exclusion(targetOrConfig, key, descriptor) {
+    return base(targetOrConfig, key, descriptor, ValidationRule.exclusion);
+  }
+
+  _export('exclusion', exclusion);
+
+  function inclusion(targetOrConfig, key, descriptor) {
+    return base(targetOrConfig, key, descriptor, ValidationRule.inclusion);
+  }
+
+  _export('inclusion', inclusion);
+
+  function format(targetOrConfig, key, descriptor) {
+    return base(targetOrConfig, key, descriptor, ValidationRule.format);
+  }
+
+  _export('format', format);
+
+  function url(targetOrConfig, key, descriptor) {
+    return base(targetOrConfig, key, descriptor, ValidationRule.url);
+  }
+
+  _export('url', url);
+
+  function numericality(targetOrConfig, key, descriptor) {
+    return base(targetOrConfig, key, descriptor, ValidationRule.numericality);
+  }
+
+  _export('numericality', numericality);
+
+  function configure(config) {
+    config.container.registerInstance(ValidatorInterface, new Validator());
+  }
+
+  _export('configure', configure);
+
   return {
     setters: [function (_aureliaMetadata) {
       metadata = _aureliaMetadata.metadata;
@@ -91,21 +211,6 @@ System.register(['aurelia-metadata', 'aurelia-validation', 'validate.js'], funct
       }());
 
       _export('ValidationRule', ValidationRule);
-
-      function cleanResult(data) {
-        var result = {};
-        for (var prop in data) {
-          if (data.hasOwnProperty(prop)) {
-            result = {
-              propertyName: prop,
-              message: data[prop][0]
-            };
-          }
-        }
-        return result;
-      }
-
-      _export('cleanResult', cleanResult);
 
       _export('ValidationRules', ValidationRules = function () {
         function ValidationRules() {
@@ -205,105 +310,6 @@ System.register(['aurelia-metadata', 'aurelia-validation', 'validate.js'], funct
 
       _export('ValidationRules', ValidationRules);
 
-      function base(targetOrConfig, key, descriptor, rule) {
-        if (key) {
-          var target = targetOrConfig;
-          targetOrConfig = null;
-          return addRule(target, key, descriptor, targetOrConfig, rule);
-        }
-        return function (t, k, d) {
-          return addRule(t, k, d, targetOrConfig, rule);
-        };
-      }
-
-      _export('base', base);
-
-      function addRule(target, key, descriptor, targetOrConfig, rule) {
-        var rules = metadata.getOrCreateOwn(metadataKey, ValidationRules, target);
-        if (targetOrConfig === null || targetOrConfig === undefined) {
-          targetOrConfig = true;
-        }
-        rules.addRule(key, rule(targetOrConfig));
-
-        if (descriptor) {
-          descriptor.configurable = true;
-        }
-      }
-
-      _export('addRule', addRule);
-
-      function length(targetOrConfig, key, descriptor) {
-        return base(targetOrConfig, key, descriptor, ValidationRule.lengthRule);
-      }
-
-      _export('length', length);
-
-      function presence(targetOrConfig, key, descriptor) {
-        return base(targetOrConfig, key, descriptor, ValidationRule.presence, true);
-      }
-
-      _export('presence', presence);
-
-      function required(targetOrConfig, key, descriptor) {
-        return base(targetOrConfig, key, descriptor, ValidationRule.presence, true);
-      }
-
-      _export('required', required);
-
-      function date(targetOrConfig, key, descriptor) {
-        return base(targetOrConfig, key, descriptor, ValidationRule.date);
-      }
-
-      _export('date', date);
-
-      function datetime(targetOrConfig, key, descriptor) {
-        return base(targetOrConfig, key, descriptor, ValidationRule.datetime);
-      }
-
-      _export('datetime', datetime);
-
-      function email(targetOrConfig, key, descriptor) {
-        return base(targetOrConfig, key, descriptor, ValidationRule.email);
-      }
-
-      _export('email', email);
-
-      function equality(targetOrConfig, key, descriptor) {
-        return base(targetOrConfig, key, descriptor, ValidationRule.equality);
-      }
-
-      _export('equality', equality);
-
-      function exclusion(targetOrConfig, key, descriptor) {
-        return base(targetOrConfig, key, descriptor, ValidationRule.exclusion);
-      }
-
-      _export('exclusion', exclusion);
-
-      function inclusion(targetOrConfig, key, descriptor) {
-        return base(targetOrConfig, key, descriptor, ValidationRule.inclusion);
-      }
-
-      _export('inclusion', inclusion);
-
-      function format(targetOrConfig, key, descriptor) {
-        return base(targetOrConfig, key, descriptor, ValidationRule.format);
-      }
-
-      _export('format', format);
-
-      function url(targetOrConfig, key, descriptor) {
-        return base(targetOrConfig, key, descriptor, ValidationRule.url);
-      }
-
-      _export('url', url);
-
-      function numericality(targetOrConfig, key, descriptor) {
-        return base(targetOrConfig, key, descriptor, ValidationRule.numericality);
-      }
-
-      _export('numericality', numericality);
-
       _export('Validator', Validator = function () {
         function Validator() {
           
@@ -357,12 +363,6 @@ System.register(['aurelia-metadata', 'aurelia-validation', 'validate.js'], funct
       }());
 
       _export('Validator', Validator);
-
-      function configure(config) {
-        config.container.registerInstance(ValidatorInterface, new Validator());
-      }
-
-      _export('configure', configure);
     }
   };
 });

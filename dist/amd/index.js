@@ -5,7 +5,7 @@ define(['exports', './aurelia-validatejs'], function (exports, _aureliaValidatej
     value: true
   });
   Object.keys(_aureliaValidatejs).forEach(function (key) {
-    if (key === "default") return;
+    if (key === "default" || key === "__esModule") return;
     Object.defineProperty(exports, key, {
       enumerable: true,
       get: function () {
