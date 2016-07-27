@@ -19,8 +19,8 @@
     "url": "https://github.com/aurelia/validatejs"
   },
   "dependencies": {
-    "aurelia-metadata": "^1.0.0-rc.1.0.0",
-    "aurelia-validation": "^0.10.0",
+    "aurelia-metadata": "^1.0.0",
+    "aurelia-validation": "^0.11.0",
     "validate.js": "^0.10.0"
   }
 }
