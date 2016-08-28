@@ -5,7 +5,9 @@
 [![Join the chat at https://gitter.im/aurelia/discuss](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/aurelia/discuss?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![CircleCI](https://circleci.com/gh/aurelia/validatejs.svg?style=shield)](https://circleci.com/gh/aurelia/validatejs)
 
-This library has been deprecated. The aurelia-validation library now contains all the components necessary for validation out-of-the-box.
+# *** DEPRECATED ***
+
+This library has been deprecated. The [aurelia-validation](https://github.com/aurelia/validation) library now contains all the components necessary for validation out-of-the-box.
 
 # *** WARNING ***
 
